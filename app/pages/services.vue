@@ -9,12 +9,12 @@ import EmbededVideo from '~/components/EmbedVideo.vue'
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 
 const pageData = {
-  heading: "MAIN HEADING",
+  heading: "LET ME MILL FOR YOU",
 
   topImages: [
     new URL('@/assets/working/milling1.jpg', import.meta.url).href,
-    new URL('@/assets/working/milling1.jpg', import.meta.url).href,
-    new URL('@/assets/working/milling1.jpg', import.meta.url).href,
+    new URL('@/assets/working/milling2.jpg', import.meta.url).href,
+    new URL('@/assets/working/milling3.jpg', import.meta.url).href,
   ],
 
   summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum augue neque, rutrum in luctus nec, consequat sit amet nisi. Duis vel odio eget nibh viverra commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean porttitor, metus nec mollis varius, lectus tellus viverra enim, quis posuere enim ipsum molestie urna. Proin malesuada turpis ante, at fringilla magna iaculis at. In dignissim congue diam nec tempor. Vestibulum tincidunt quam justo, quis volutpat enim elementum ac.",
@@ -53,34 +53,21 @@ const pageData = {
     }
   },
 
-  faq: {
-    image: new URL('@/assets/working/milling1.jpg', import.meta.url).href,
-    layout: "left",
-
-    faqSetion: {
-      title: "Frequently Asked Questions",
-        image: new URL('@/assets/working/milling1.jpg', import.meta.url).href,
-        faqs: [
-          {
-            q: "Lorem ipsum dolor sit amet, consectetur adipiscing el?",
-            a: "Donec auctor, dolor id laoreet molestie, risus ligula vestibulum nisl, nec tincidunt mauris orci in erat. Curabitur vel orci venenatis, bibendum libero et, pharetra metus. "
-          },
-          {
-            q: "Vestibulum bibendum nibh non elit consequat, cursus lobortis nibh dapibus.?",
-            a: "Praesent blandit quam a ipsum faucibus semper. Donec luctus nisi id finibus pharetra. Suspendisse diam sem."
-          }
-      ]
-    }
-  },
-
   travelLimits: 
     {
-      title: "Travel Limits/Additional Info",
+      title: "Travel Limits",
       image: new URL('@/assets/working/milling1.jpg', import.meta.url).href,
       layout: "right",
       content: "Example text."
-    }
-  }
+    },
+
+  faq: {
+    title: "Frequently Asked Questions",
+    image: new URL('@/assets/working/milling1.jpg', import.meta.url).href,
+    layout: "left",
+  },
+
+}
 </script>
 
 <template>
@@ -89,15 +76,8 @@ const pageData = {
     {{ pageData.heading }}
   </h1>
 
-  <v-container width="50%">
-    <Accordion 
-      title="Test",
-      text="Test text"
-    />
-  </v-container>
-
   <EmbededVideo 
-    url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    url="https://www.youtube.com/embed/-AJfAfg8y0E"
   />
 
   <!-- TOP IMAGES -->
@@ -122,9 +102,12 @@ const pageData = {
 
   <!-- SUMMARY -->
   <div class="p-container">
-    <p :class="mobile ? 'p-text-size-sm' : 'p-text-size-lg'" class="p-text">
-      {{ pageData.summary }}
-    </p>
+      <p :class="mobile ? 'p-text-size-sm' : 'p-text-size-lg'" class="p-text">
+          Have a downed tree you don't know what to do with?
+          <br>Need custom milling for your project?
+          <br><br>Slabs, rounds, whatever you need, I can cut it!<br><br>
+          Bring your wood to me or let me come to you, either way, that log doesn't stand a chance against my saws!
+      </p>
   </div>
 
   <!-- SERVICES HEADER -->
@@ -135,30 +118,47 @@ const pageData = {
   <!-- DYNAMIC SECTIONS -->
   <v-container :class="mobile ? 'v-text-small' : 'easy-to-see'">
 
-    <ImageWithText :imageUrl="pageData.pricing.image">
+    <ImageWithText 
+      :imageUrl="pageData.pricing.image"
+      layout="left"
+    >
+      <span class="textbox-title">{{ pageData.travelLimits.title }}</span>
+        <hr>
       <PricingSection
         :pricing="pageData.pricing.pricing"
       />
     </ImageWithText>
 
-    <ImageWithText 
-      :imageUrl="pageData.faq.image"
-      :layout="pageData.faq.layout"
-    >
-      <FaqSection 
-        :faq="pageData.faq.faqSetion"
-      />
-    </ImageWithText>
-
     <ImageWithText
       :imageUrl="pageData.travelLimits.image"
-      :layout="pageData.travelLimits.layout"
+      layout="right"
     >
       <span class="textbox-title">{{ pageData.travelLimits.title }}</span>
       <hr>
-        <v-container class="p-text-size p-text-line-height">
-          {{ pageData.travelLimits.content }}
+        <v-container class="p-text-size p-text-line-height text-column">
+            <span>I will travel to you, but I can only reach so far.</span>
+            <span><b>If the job is outside of the Springfield, Ozark, or Nixa MO area</b>:
+            <br>Travel expenses are added based on gas and time taken.</span>
+            <span><b>If travel time is longer than 2 hours</b>:
+            <br>I likely won't make the trip, but feel free to ask!</span>
         </v-container>
+    </ImageWithText>
+
+    <ImageWithText 
+      :imageUrl="pageData.faq.image"
+      :layout="left"
+    >
+      <div class="text-column">
+        <span class="textbox-title">{{ pageData.faq.title }}</span>
+        <hr>
+        <v-container class="p-text-size p-text-line-height">
+            <b>Will you cut the tree down before milling it?</b>
+            <br>My passion is in milling, so <b>we do not offer tree felling services.</b>
+            <br><br><b>Do you sand or treat the wood?</b>
+            <br>I only offer raw lumber and milling services. I do not sand, stain, or treat my wood in any way.
+            Part of the fun is doing it yourself!
+        </v-container>
+      </div>
     </ImageWithText>
 
   </v-container>

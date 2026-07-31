@@ -31,12 +31,12 @@ const pageConfig = {
   },
   navigation: {
     home: {
-      title: 'Example Title',
+      title: 'Milling By Darrell',
       link: '/'
     },
     items: [
-      { title: 'Services', link: '/services' },
-      { title: 'Gallery', link: '/gallery' },
+      { title: 'Milling Services', link: '/services' },
+      { title: 'Wood Slabs and Rounds', link: '/gallery' },
       { title: 'Contact Me', link: '/contact' }
     ]
   },
@@ -104,12 +104,14 @@ const appBarHeight = computed(() =>
   >
     <v-list>
       <v-list-item
+        class="drawer-item"
         :title="pageConfig.navigation.home.title"
         :to="pageConfig.navigation.home.link"
         link
       />
 
       <v-list-item
+        class="drawer-item"
         v-for="(item, i) in pageConfig.navigation.items"
         :key="i"
         :to="item.link"
@@ -121,6 +123,17 @@ const appBarHeight = computed(() =>
 </template>
 
 <style scoped>
+.drawer-item {
+  justify-content: center;
+  text-align: center;
+}
+
+.drawer-item :deep(.v-list-item-title) {
+  width: 100%;
+  text-align: center;
+  color: #e9e9e9; /* light gray */
+}
+
 .default-nav-text {
   text-transform: uppercase;
   letter-spacing: 2.5px;
