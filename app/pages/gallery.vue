@@ -7,15 +7,6 @@ const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 const page = {
   title: 'HAVE YOU SEEN MY WOOD?',
 
-  description: `
-    Below are the examples of the kind of wood I have to offer.
-    Visit My Marketplace Listings for the most updated stock.
-    Contact me/us for more information.
-  `,
-
-  marketplaceUrl: 'https://www.facebook.com/marketplace',
-  contactUrl: '/contact',
-
   gallery: {
     gridCols: 4,
     mobileCols: 2,
@@ -67,3 +58,26 @@ const page = {
     :contain="page.gallery.contain"
   />
 </template>
+
+<style scoped>
+.smaller-text {
+    font-size: 18px;
+}
+
+.even-smaller-text {
+  font-size: 14px;
+}
+
+.loud-header {
+    margin-bottom: 0;
+}
+
+.p-text {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.v-container {
+    padding: 35px 0px;
+}
+</style>
