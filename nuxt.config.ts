@@ -13,9 +13,10 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   runtimeConfig: {
-    cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
-    cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
+    cloudinaryApiSecret: '',
+    cloudinaryApiKey: '',
+    cloudinaryCloudName: '',
+    public: {}
   },
   app: {
     head: {

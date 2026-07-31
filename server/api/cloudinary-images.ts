@@ -6,8 +6,8 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
 
   cloudinary.config({
-    cloud_name: config.public.cloudinaryCloudName,
-    api_key: config.public.cloudinaryApiKey,
+    cloud_name: config.cloudinaryCloudName,
+    api_key: config.cloudinaryApiKey,
     api_secret: config.cloudinaryApiSecret,
   })
 
