@@ -1,9 +1,9 @@
 <script setup>
     import { useDisplay } from 'vuetify';
-    import HeroCarousel  from '@/components/HeroCarousel.vue';
-    import ImageWithText  from '@/components/ImageWithText.vue';
+    import HeroCarousel  from '@/components/heroCarousel.vue';
+    import ImageWithText  from '@/components/imageWithText.vue';
     
-    import exampleImg from '@/assets/wood-slabs/slabs_on_mill.jpg'
+    import slabsOnMill from '@/assets/wood-slabs/slabs_on_mill.jpg'
     
     const { mobile } = useDisplay({ mobileBreakpoint: 960 });
 
@@ -16,7 +16,7 @@ const heroBlock = {
   slides: [
     {
       type: "hero",
-      imageUrl: exampleImg,
+      imageUrl: slabsOnMill,
       title: "Custom Milling Done Right",
       subtitle: "We turn raw logs into beautiful lumber",
       button: {
@@ -26,7 +26,17 @@ const heroBlock = {
     },
     {
       type: "hero",
-      imageUrl: exampleImg,
+      imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770526421/silverMaple_harnyr.jpg",
+      title: "Wood Slabs or Rounds",
+      subtitle: "Get ready for your next project",
+      button: {
+        text: "Check Out My Wood",
+        to: "/wood"
+      }
+    },
+    {
+      type: "hero",
+      imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770529906/wood-rounds/gcxyhe8tgp1ni7egvzoj.jpg",
       title: "Contact Me",
       subtitle: "Reach out for quotes and info",
       button: {
@@ -39,25 +49,32 @@ const heroBlock = {
 
 
 const pageData = {
-  title: "TITLE",
-  subtitle: "Secondary Title",
+  title: "MILLING BY DARRELL",
+  subtitle: "MILLING IN OZARK MISSOURI",
 
-  sections: [
-    {
-      type: "imageWithText",
-      text: "Example Text",
-      imageUrl: exampleImg,
-      layout: "right",
-      variant: "card"
-    },
-    {
-      type: "imageWithText",
-      text: "Example Text",
-      imageUrl: exampleImg,
-      layout: "left",
-      variant: "minimal"
-    }
-  ]
+  // sections: [
+  //   {
+  //     type: "imageWithText",
+  //     text: "Example Text",
+  //     imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770526415/wood_slabs2_i7vfqf.jpg",
+  //     layout: "left",
+  //     variant: "card"
+  //   },
+  //   {
+  //     type: "imageWithText",
+  //     text: "Example Text",
+  //     imageUrl: exampleImg,
+  //     layout: "right",
+  //     variant: "card"
+  //   },
+  //   {
+  //     type: "imageWithText",
+  //     text: "Example Text",
+  //     imageUrl: exampleImg,
+  //     layout: "left",
+  //     variant: "card"
+  //   }
+  // ]
 }
 
 
@@ -85,12 +102,51 @@ const resolveComponent = (type) => {
   </h2>
 
   <v-container fluid class="mt-4 mb-4">
-    <component
+    <!-- <component
       v-for="(section, index) in pageData.sections"
       :key="index"
       :is="resolveComponent(section.type)"
       v-bind="section"
-    />
+    /> -->
+
+    <ImageWithText imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1770526415/wood_slabs2_i7vfqf.jpg" layout="left">
+      <div class="text-column">
+          <span>Milling By Darrell is a small scale milling business in the Christian County area.</span>
+          
+          <span>What started as a passionate hobby quickly turned into a passionate business. 
+          Fueled by a love of chainsaws and the smell of fresh cut wood, Darrell is dedicated to his craft.</span>
+          
+              <span>Here you can find information on 
+          <router-link to='/services' >
+              Milling Services, 
+          </router-link>
+          or see some examples of 
+          <router-link to='/wood' >
+              wood slabs and rounds 
+          </router-link>
+          for your next woodworking project! </span>
+          
+          <span><a href='https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh' target='_blank' rel='noopener noreferrer'>
+              <b>Visit Marketplace Listings</b>
+          </a>
+          to see more what I have to offer.</span>
+          
+          <span>Text: <b>(417)360-2260</b></span>
+          
+          <span>Email: <b>millingbydarrell@gmail.com</b></span>
+      </div>
+    </ImageWithText>
+
+    <ImageWithText
+      imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1770526388/slabs-against-house_vrnvte.jpg"
+      layout="right"
+    >
+      <div className="text-column">
+        <span>If you need a slab of wood, wood round, mantelpiece, or post, I will cut it.</span>
+        <span>If you need a fallen tree removed, I will take it.</span>
+        <span>If you need a log milled to size, I will mill it.</span>
+      </div>
+    </ImageWithText>
   </v-container>
 </template>
 

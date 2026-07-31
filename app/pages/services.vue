@@ -1,5 +1,5 @@
 <script setup>
-import ImageWithText from '@/components/ImageWithText.vue'
+import ImageWithText from '@/components/imageWithText.vue'
 import { useDisplay } from 'vuetify'
 import PricingSection from '@/sections/PricingSection.vue'
 import FaqSection from '@/sections/FaqSection.vue'

@@ -1,6 +1,6 @@
 <script setup>
-import EmailForm from '@/components/EmailForm.vue'
-import ImageWithText from '@/components/ImageWithText.vue'
+import EmailForm from '@/components/emailForm.vue'
+import ImageWithText from '@/components/imageWithText.vue'
 import ContactSection from '~/sections/ContactSection.vue'
 import { useDisplay } from 'vuetify'
 

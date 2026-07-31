@@ -1,5 +1,5 @@
 <script setup>
-import Gallery from '@/components/GalleryGrid.vue'
+import Gallery from '@/components/galleryGrid.vue'
 import { useDisplay } from 'vuetify'
 
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })

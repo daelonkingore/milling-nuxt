@@ -81,6 +81,16 @@ a:hover {
   align-items: center;
 }
 
+.text-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+  height: 100%;
+  text-align: center;
+  gap: 1rem;
+}
+
 /* =========================
    Header System
 ========================= */
