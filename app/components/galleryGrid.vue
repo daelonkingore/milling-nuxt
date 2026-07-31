@@ -24,6 +24,11 @@ const props = defineProps({
   modelValue: String,
 })
 
+const emit = defineEmits([
+  'delete',
+  'update:modelValue',
+])
+
 /* =========================================================
  * State
  * =======================================================*/
@@ -46,11 +51,6 @@ const loadingMore = ref(false)
 const sentinel = ref(null)
 let observer
 
-const emit = defineEmits([
-  'delete',
-  'update:modelValue',
-])
-
 /* =========================================================
  * Fetching
  * =======================================================*/
@@ -62,28 +62,6 @@ const { data: images, refresh } = await useFetch(
       ? `${props.imagesEndpoint}?folder=${selectedFolder.value}`
       : null,
   { immediate: false }
-)
-
-/* =========================================================
- * Watchers
- * =======================================================*/
-// load images when folder changes
-watch(selectedFolder, () => {
-  if (selectedFolder.value) {
-    refresh()
-    visibleCount.value = BATCH_SIZE
-  }
-})
-
-// set default folder
-watch(
-  formattedFolders,
-  folders => {
-    if (folders.length && !selectedFolder.value) {
-      selectedFolder.value = folders[0].value
-    }
-  },
-  { immediate: true }
 )
 
 /* =========================================================
@@ -214,6 +192,28 @@ onUnmounted(() => {
     observer.unobserve(sentinel.value)
   }
 })
+
+/* =========================================================
+ * Watchers
+ * =======================================================*/
+// load images when folder changes
+watch(selectedFolder, () => {
+  if (selectedFolder.value) {
+    refresh()
+    visibleCount.value = BATCH_SIZE
+  }
+})
+
+// set default folder
+watch(
+  formattedFolders,
+  folders => {
+    if (folders.length && !selectedFolder.value) {
+      selectedFolder.value = folders[0].value
+    }
+  },
+  { immediate: true }
+)
 
 /* =========================================================
  * Helpers

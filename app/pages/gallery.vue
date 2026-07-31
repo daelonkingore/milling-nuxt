@@ -14,6 +14,8 @@ const page = {
     contain: false
   }
 }
+
+const selectedFolder = ref(null)
 </script>
 
 <template>
@@ -56,6 +58,7 @@ const page = {
     :mobile-cols="page.gallery.mobileCols"
     :image-height="page.gallery.imageHeight"
     :contain="page.gallery.contain"
+    v-model="selectedFolder"
   />
 </template>
 

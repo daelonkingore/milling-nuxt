@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 import Gallery from '@/components/galleryGrid.vue'
 import { upload } from '@/composables/handleImages'
 import netlifyIdentity from 'netlify-identity-widget'
