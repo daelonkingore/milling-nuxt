@@ -107,14 +107,6 @@ const page = {
 const canUpload = computed(() => {
   return !!file.value && !!selectedFolder.value && !uploading.value
 })
-
-watch(file, f => {
-  console.log('file', f)
-})
-
-watch(selectedFolder, f => {
-  console.log('folder', f)
-})
 </script>
 
 <template>
