@@ -32,6 +32,7 @@ onMounted(() => {
   const current = netlifyIdentity.currentUser()
   if (current) user.value = current
   loadingUser.value = false
+  selectedFolder.value = folders.value[0]
 })
 
 async function loadImages() {
@@ -103,6 +104,18 @@ const page = {
     contain: false
   }
 }
+
+const canUpload = computed(() => {
+  return !!file.value && !!selectedFolder.value && !uploading.value
+})
+
+watch(file, f => {
+  console.log('file', f)
+})
+
+watch(selectedFolder, f => {
+  console.log('folder', f)
+})
 </script>
 
 <template>
@@ -123,7 +136,7 @@ const page = {
     />
 
     <v-btn
-      :disabled="!file || !selectedFolder"
+      :disabled="!canUpload"
       :loading="uploading"
       @click="uploadImage"
     >
