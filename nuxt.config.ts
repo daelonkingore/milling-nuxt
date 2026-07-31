@@ -19,4 +19,11 @@ export default defineNuxtConfig({
       cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
     }
   },
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
+  },
 })

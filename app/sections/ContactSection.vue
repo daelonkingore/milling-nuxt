@@ -13,8 +13,7 @@ defineProps({
 
 <template>
   <v-container class="pa-0">
-    <v-card
-      :class="mobile ? 'p-text-size-sm' : 'p-text-size-md'"
+    <v-card :class="mobile ? 'p-text-size-sm' : 'p-text-size-md'"
       class="mx-auto pa-6 p-container p-text mt-0"
       width="100%"
       rounded="xl"
@@ -36,7 +35,7 @@ defineProps({
       </p>
 
       <p v-if="contacts.location">
-        {{ contacts.location }}
+        I am based in <b>Ozark, Missouri</b>, {{ contacts.location }}
       </p>
       <p v-if="contacts.serviceAreas">
         {{ contacts.serviceAreas }}.
@@ -58,8 +57,8 @@ defineProps({
 
         <template v-if="contacts.facebookLink">
             <a :href="contacts.facebookLink" target="_blank">
-            <b>Facebook</b>
-            </a>
+            <b>Visit My Facebook</b>
+            </a> for timelapses of my work, and more!
         </template>
       </p>
     </v-card>

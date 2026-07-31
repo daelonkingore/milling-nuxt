@@ -17,9 +17,7 @@ const pageData = {
     new URL('@/assets/working/milling3.jpg', import.meta.url).href,
   ],
 
-  summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum augue neque, rutrum in luctus nec, consequat sit amet nisi. Duis vel odio eget nibh viverra commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean porttitor, metus nec mollis varius, lectus tellus viverra enim, quis posuere enim ipsum molestie urna. Proin malesuada turpis ante, at fringilla magna iaculis at. In dignissim congue diam nec tempor. Vestibulum tincidunt quam justo, quis volutpat enim elementum ac.",
-
-  servicesHeading: "SERVICES",
+  servicesHeading: "MILLING SERVICES",
 
   pricing: {
     image: new URL('@/assets/working/milling1.jpg', import.meta.url).href,
@@ -76,40 +74,6 @@ const pageData = {
     {{ pageData.heading }}
   </h1>
 
-  <EmbededVideo 
-    url="https://www.youtube.com/embed/-AJfAfg8y0E"
-  />
-
-  <!-- TOP IMAGES -->
-  <v-row class="services-pics-row">
-    <v-col
-      v-for="(img, i) in pageData.topImages"
-      :key="i"
-      cols="12"
-      md="4"
-      class="d-flex justify-center"
-      v-show="mobile ? i === 1 : true"
-    >
-      <v-img
-        cover
-        rounded
-        class="working-img"
-        :src="img"
-        eager
-      />
-    </v-col>
-  </v-row>
-
-  <!-- SUMMARY -->
-  <div class="p-container">
-      <p :class="mobile ? 'p-text-size-sm' : 'p-text-size-lg'" class="p-text">
-          Have a downed tree you don't know what to do with?
-          <br>Need custom milling for your project?
-          <br><br>Slabs, rounds, whatever you need, I can cut it!<br><br>
-          Bring your wood to me or let me come to you, either way, that log doesn't stand a chance against my saws!
-      </p>
-  </div>
-
   <!-- SERVICES HEADER -->
   <h2 :class="mobile ? 'h2-subheading mb-4' : 'loud-header-h2 mb-7'">
     {{ pageData.servicesHeading }}
@@ -122,7 +86,7 @@ const pageData = {
       :imageUrl="pageData.pricing.image"
       layout="left"
     >
-      <span class="textbox-title">{{ pageData.travelLimits.title }}</span>
+      <span class="textbox-title">Milling</span>
         <hr>
       <PricingSection
         :pricing="pageData.pricing.pricing"
@@ -162,6 +126,40 @@ const pageData = {
     </ImageWithText>
 
   </v-container>
+
+  <!-- SUMMARY -->
+  <div class="p-container">
+      <p :class="mobile ? 'p-text-size-sm' : 'p-text-size-lg'" class="p-text">
+          Have a downed tree you don't know what to do with?
+          <br>Need custom milling for your project?
+          <br><br>Slabs, rounds, whatever you need, I can cut it!<br><br>
+          Bring your wood to me or let me come to you, either way, that log doesn't stand a chance against my saws!
+      </p>
+  </div>
+
+  <EmbededVideo 
+    url="https://www.youtube.com/embed/-AJfAfg8y0E"
+  />
+
+  <!-- TOP IMAGES -->
+  <v-row class="services-pics-row">
+    <v-col
+      v-for="(img, i) in pageData.topImages"
+      :key="i"
+      cols="12"
+      md="4"
+      class="d-flex justify-center"
+      v-show="mobile ? i === 1 : true"
+    >
+      <v-img
+        cover
+        rounded
+        class="working-img"
+        :src="img"
+        eager
+      />
+    </v-col>
+  </v-row>
 </template>
 
 <style scoped>

@@ -19,7 +19,8 @@ const props = defineProps({
   mobileCols: { type: [Number, String], default: 1 },
 
   imageHeight: { type: String, default: '250px' },
-  contain: { type: Boolean, default: true }
+  contain: { type: Boolean, default: true },
+  deletable: { type: Boolean, default: false }
 })
 
 /* =========================================================
@@ -40,6 +41,8 @@ const loadingMore = ref(false)
 // observer
 const sentinel = ref(null)
 let observer
+
+const emit = defineEmits(['delete'])
 
 /* =========================================================
  * Fetching
@@ -230,6 +233,14 @@ function getImageUrl(img) {
                 loading="lazy"
                 @click="showDialog(getImageUrl(img), index)"
             />
+            <v-card-actions v-if="deletable">
+              <v-spacer />
+              <v-btn
+                icon="mdi-delete"
+                color="red"
+                @click.stop="$emit('delete', image)"
+              />
+            </v-card-actions>
         </v-card>
       </v-col>
     </v-row>

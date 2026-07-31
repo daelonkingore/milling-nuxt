@@ -14,4 +14,9 @@
 <script setup>
   import Navigation from './components/navigation.vue'
   import Footer from './components/footer.vue'
+  useHead({
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ]
+  })
 </script>

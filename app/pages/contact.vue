@@ -7,22 +7,22 @@ import { useDisplay } from 'vuetify'
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 
 const pageData = {
-  heading: "MAIN HEADING",
+  heading: "LET'S TALK WOOD",
   subheading: "CONTACT INFO AND MORE",
-  aboutHeading: "ABOUT ME/US",
+  aboutHeading: "ABOUT ME",
 
   contact: {
-    intro: "Send me/us a text or email.",
-    facebookLink: "https://www.facebook.com",
-    phone: "(555)555-5555",
-    email: "example@gmail.com",
+    intro: "Send me a text or email. I usually have my current stock of wood slabs and rounds available on",
+    facebookLink: "https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh",
+    phone: "(417)360-2260",
+    email: "millingbydarrell@gmail.com",
     marketplace: {
-      marketplaceLink: "https://www.facebook.com/marketplace",
+      marketplaceLink: "https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh",
       marketplaceText: "Visit My Marketplace Listings"
     },
-    location: "I am based in Place, so if you live there, I'm your guy!",
-    serviceAreas: "I mainly operate in places",
-    youtubeLink: "https://www.youtube.com",
+    location: "so if you live in Southern Missouri or Northern Arkansas and need wood milled, a fallen tree gone, or want to buy a wood slab at an affordable price, I'm your guy!",
+    serviceAreas: "I mainly operate in the towns surrounding Ozark, including Sparta, Nixa, Springfield, Republic, Branson, Willard, and more.",
+    youtubeLink: "https://www.youtube.com/@Millingbydarrell",
     callToActionText: "Check out my"
   },
 
@@ -35,8 +35,8 @@ const pageData = {
 
   galleryImages: [
     new URL('@/assets/wood-slabs/bug_cube.jpg', import.meta.url).href,
-    new URL('@/assets/wood-slabs/bug_cube.jpg', import.meta.url).href,
-    new URL('@/assets/wood-slabs/bug_cube.jpg', import.meta.url).href,
+    new URL('@/assets/people/milling-big-wood.jpg', import.meta.url).href,
+    new URL('@/assets/wood-slabs/slabs_on_mill.jpg', import.meta.url).href,
   ]
 }
 </script>
@@ -58,7 +58,7 @@ const pageData = {
   </h2>
 
   <!-- CONTACT CARD -->
-  <ContactSection
+  <ContactSection class="pa-0"
     :contacts="pageData.contact"
   />
 
@@ -70,11 +70,27 @@ const pageData = {
   <v-container fluid>
     <ImageWithText
         class="pt-7 img-height"
-        :imageUrl="pageData.about.image"
-        layout="overlay"
+        imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1772417451/smileWithEquipment_jqswfm.jpg"
+        layout="left"
     >
-        <div class="text-content">
-        {{ pageData.about.text }}
+        <div class="text-content text-column">
+            <span>
+              Hi. I'm Darrell, owner of Milling By Darrell, LLC. I started my passion of milling in 2024. The smell, the texture, the patterns, 
+              and the colors of wood are beautiful and very appealing. 
+            </span>
+            <span>
+              Instead of burning it, I decided to start milling it. 
+              I quickly fell in love with milling after seeing the outcome of a freshly sliced log and how beautiful it was. 
+              As I continued gaining experience I found how enjoyable and rewarding milling had become. 
+            </span>
+            <span>
+              I want to share this passion with you. I hope you'll find this website appealing. Please feel free to review my work and the 
+              creations that many of my customers have sent me in the “customer creations” area. I offer milling services and sell slabs of wood, 
+              as well as complete custom milling to fit your needs. Should you still have questions, my contact information is listed in this website. 
+            </span>
+            <span>
+            Feel  free to send me a message or give me a call. Remember, it's a great day to mill!
+            </span>
         </div>
     </ImageWithText>
   </v-container>
