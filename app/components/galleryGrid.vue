@@ -88,7 +88,7 @@ const dialogClass = computed(() =>
 
 const folderLabels = {
   'logs-to-mill': 'Logs to Mill',
-  'background-imgs': 'Background Images'
+  'beams-and-mantles': 'Beams and Mantles'
 }
 
 const formattedFolders = computed(() =>
