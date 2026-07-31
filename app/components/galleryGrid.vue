@@ -194,6 +194,8 @@ onMounted(() => {
   )
 
   if (sentinel.value) observer.observe(sentinel.value)
+  
+  selectedFolder.value = folders.value[0]
 })
 
 onUnmounted(() => {

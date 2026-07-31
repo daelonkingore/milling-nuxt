@@ -32,7 +32,6 @@ onMounted(() => {
   const current = netlifyIdentity.currentUser()
   if (current) user.value = current
   loadingUser.value = false
-  selectedFolder.value = folders.value[0]
 })
 
 async function loadImages() {
