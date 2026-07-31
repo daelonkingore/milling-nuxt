@@ -96,11 +96,22 @@ const folderLabels = {
   'people': 'The People Behind It',
 }
 
+const folderOrder = Object.keys(folderLabels)
+
 const formattedFolders = computed(() =>
-  (folders.value || []).map(folder => ({
-    title: folderLabels[folder] || folder,
-    value: folder
-  }))
+  (folders.value || [])
+    .slice() // avoid mutating the original array
+    .sort((a, b) => {
+      const aIndex = folderOrder.indexOf(a)
+      const bIndex = folderOrder.indexOf(b)
+
+      // Put unknown folders after the known ones
+      return (aIndex === -1 ? Infinity : aIndex) - (bIndex === -1 ? Infinity : bIndex)
+    })
+    .map(folder => ({
+      title: folderLabels[folder] || folder,
+      value: folder,
+    }))
 )
 
 const visibleImages = computed(() =>

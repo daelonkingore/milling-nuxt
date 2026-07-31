@@ -122,6 +122,14 @@ const page = {
       label="Select Image"
     />
 
+    <v-btn
+      :disabled="!file || !selectedFolder"
+      :loading="uploading"
+      @click="uploadImage"
+    >
+      Upload
+    </v-btn>
+
     <Gallery
         :grid-cols="page.gallery.gridCols"
         :mobile-cols="page.gallery.mobileCols"
