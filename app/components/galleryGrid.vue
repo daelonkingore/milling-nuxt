@@ -20,13 +20,17 @@ const props = defineProps({
 
   imageHeight: { type: String, default: '250px' },
   contain: { type: Boolean, default: true },
-  deletable: { type: Boolean, default: false }
+  deletable: { type: Boolean, default: false },
+  modelValue: String,
 })
 
 /* =========================================================
  * State
  * =======================================================*/
-const selectedFolder = ref(null)
+const selectedFolder = computed({
+  get: () => props.modelValue,
+  set: value => emit('update:modelValue', value)
+})
 
 // dialog
 const dialogVisible = ref(false)
@@ -42,7 +46,10 @@ const loadingMore = ref(false)
 const sentinel = ref(null)
 let observer
 
-const emit = defineEmits(['delete'])
+const emit = defineEmits([
+  'delete',
+  'update:modelValue',
+])
 
 /* =========================================================
  * Fetching
@@ -69,11 +76,15 @@ watch(selectedFolder, () => {
 })
 
 // set default folder
-watchEffect(() => {
-  if (folders.value?.length && !selectedFolder.value) {
-    selectedFolder.value = folders.value[0]
-  }
-})
+watch(
+  formattedFolders,
+  folders => {
+    if (folders.length && !selectedFolder.value) {
+      selectedFolder.value = folders[0].value
+    }
+  },
+  { immediate: true }
+)
 
 /* =========================================================
  * Computed
@@ -194,8 +205,6 @@ onMounted(() => {
   )
 
   if (sentinel.value) observer.observe(sentinel.value)
-  
-  selectedFolder.value = folders.value[0]
 })
 
 onUnmounted(() => {

@@ -149,6 +149,7 @@ watch(selectedFolder, f => {
         :contain="page.gallery.contain"
         :deletable="true"
         @delete="delImage"
+        v-model="selectedFolder"
     />
   </div>
 </template>
