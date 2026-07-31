@@ -87,8 +87,13 @@ const dialogClass = computed(() =>
 )
 
 const folderLabels = {
+  'wood-slabs': 'Wood Slabs',
+  'wood-rounds': 'Wood Rounds',
+  'beams-and-mantles': 'Beams and Mantles',
   'logs-to-mill': 'Logs to Mill',
-  'beams-and-mantles': 'Beams and Mantles'
+  'submitted': 'Customer Creations',
+  'working': 'Milling in Action',
+  'people': 'The People Behind It',
 }
 
 const formattedFolders = computed(() =>

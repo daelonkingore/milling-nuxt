@@ -54,6 +54,12 @@ defineProps({
 </template>
 
 <style scoped>
+.hero-img {
+  height: 70vh;
+  width: 100vw;
+  position: relative;
+}
+
 .overlay-bg {
   position: absolute;
   inset: 0;

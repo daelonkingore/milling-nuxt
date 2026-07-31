@@ -94,6 +94,15 @@ function login() {
 function logout() {
   netlifyIdentity.logout()
 }
+
+const page = {
+  gallery: {
+    gridCols: 4,
+    mobileCols: 2,
+    imageHeight: '300px',
+    contain: false
+  }
+}
 </script>
 
 <template>
