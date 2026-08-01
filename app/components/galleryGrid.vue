@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, watchEffect, computed, onMounted, onUnmounted } from 'vue'
+import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import { useDisplay } from 'vuetify'
 
 /* =========================================================
@@ -11,8 +11,8 @@ const { mobile, smAndDown } = useDisplay()
  * Props
  * =======================================================*/
 const props = defineProps({
-  foldersEndpoint: { type: String, default: '/api/cloudinary-folders' },
-  imagesEndpoint: { type: String, default: '/api/cloudinary-images' },
+  foldersEndpoint: { type: String, default: '/.netlify/functions/cloudinary-folders' },
+  imagesEndpoint: { type: String, default: '/.netlify/functions/cloudinary-images' },
 
   showSelector: { type: Boolean, default: true },
   gridCols: { type: [Number, String], default: 3 },
