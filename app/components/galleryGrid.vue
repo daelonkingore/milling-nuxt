@@ -11,8 +11,8 @@ const { mobile, smAndDown } = useDisplay()
  * Props
  * =======================================================*/
 const props = defineProps({
-  foldersEndpoint: { type: String, default: '/server/api/cloudinary-folders' },
-  imagesEndpoint: { type: String, default: '/server/api/cloudinary-images' },
+  foldersEndpoint: { type: String, default: '/api/cloudinary-folders' },
+  imagesEndpoint: { type: String, default: '/api/cloudinary-images' },
 
   showSelector: { type: Boolean, default: true },
   gridCols: { type: [Number, String], default: 3 },
