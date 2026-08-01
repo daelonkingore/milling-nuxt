@@ -11,7 +11,7 @@ export function useCloudinaryImages() {
 
     try {
       const res = await fetch(
-        `/.netlify/functions/cloudinary-images?folder=${folder}`
+        `/api/cloudinary-images?folder=${folder}`
       )
 
       images.value = await res.json()

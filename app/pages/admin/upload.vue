@@ -50,11 +50,15 @@ onMounted(() => {
 })
 
 // Watch folder changes
-watch(selectedFolder, folder => {
-  if (folder && user.value) {
-    loadImages(folder)
-  }
-})
+watch(
+  selectedFolder,
+  folder => {
+    if (folder) {
+      loadImages(folder)
+    }
+  },
+  { immediate: true }
+)
 
 async function uploadImage() {
   if (!file.value || !selectedFolder.value || !user.value) return

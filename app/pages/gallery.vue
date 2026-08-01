@@ -14,11 +14,15 @@ const {
   loadImages
 } = useCloudinaryImages()
 
-watch(selectedFolder, folder => {
-  if (folder) {
-    loadImages(folder)
-  }
-})
+watch(
+  selectedFolder,
+  folder => {
+    if (folder) {
+      loadImages(folder)
+    }
+  },
+  { immediate: true }
+)
 
 const page = {
   gallery: {
