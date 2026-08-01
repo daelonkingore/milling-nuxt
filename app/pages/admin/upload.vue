@@ -74,6 +74,9 @@ async function delImage(image) {
 
   const token = user.value.token.access_token
 
+  console.log("image: " + image)
+  console.log("image.public_id: " + image?.public_id)
+
   await fetch('/.netlify/functions/deleteImage', {
     method: 'POST',
     headers: {
