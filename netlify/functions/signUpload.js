@@ -27,7 +27,7 @@ export const handler = async (event) => {
 
   const timestamp = Math.round(Date.now() / 1000);
 
-  const paramsToSign = `folder=${folder}&timestamp=${timestamp}${process.env.CLOUDINARY_API_SECRET}`;
+  const paramsToSign = `folder=${folder}&timestamp=${timestamp}${process.env.NUXT_CLOUDINARY_API_SECRET}`;
 
   const signature = crypto
     .createHash("sha1")
@@ -39,8 +39,8 @@ export const handler = async (event) => {
     body: JSON.stringify({
       timestamp,
       signature,
-      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-      apiKey: process.env.CLOUDINARY_API_KEY,
+      cloudName: process.env.NUXT_CLOUDINARY_CLOUD_NAME,
+      apiKey: process.env.NUXT_CLOUDINARY_API_KEY,
     }),
   };
 };
