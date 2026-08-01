@@ -11,6 +11,10 @@ const { mobile, smAndDown } = useDisplay()
  * Props
  * =======================================================*/
 const props = defineProps({
+  images: {
+    type: Array,
+    default: () => []
+  },
   foldersEndpoint: { type: String, default: '/api/cloudinary-folders' },
   imagesEndpoint: { type: String, default: '/api/cloudinary-images' },
 
@@ -56,14 +60,6 @@ let observer
  * =======================================================*/
 const { data: folders } = await useFetch(props.foldersEndpoint)
 
-const { data: images, refresh } = await useFetch(
-  () =>
-    selectedFolder.value
-      ? `${props.imagesEndpoint}?folder=${selectedFolder.value}`
-      : null,
-  { immediate: false }
-)
-
 /* =========================================================
  * Computed
  * =======================================================*/
@@ -104,7 +100,7 @@ const formattedFolders = computed(() =>
 )
 
 const visibleImages = computed(() =>
-  images.value?.slice(0, visibleCount.value) || []
+  props.images?.slice(0, visibleCount.value) || []
 )
 
 /* =========================================================
@@ -113,7 +109,7 @@ const visibleImages = computed(() =>
 const optimizedImageMax = 1200
 
 function showDialog(image) {
-  const index = images.value.findIndex(
+  const index = props.images.findIndex(
     img => getImageUrl(img) === getImageUrl(image)
   )
 
@@ -123,20 +119,20 @@ function showDialog(image) {
 }
 
 function updateDialogImage() {
-  const img = images.value[currentIndex.value]
+  const img = props.images[currentIndex.value]
   imgForDialog.value = optimize(getImageUrl(img), optimizedImageMax)
 }
 
 function nextImage() {
-  if (!images.value?.length) return
-  currentIndex.value = (currentIndex.value + 1) % images.value.length
+  if (!props.images?.length) return
+  currentIndex.value = (currentIndex.value + 1) % props.images.length
   updateDialogImage()
 }
 
 function prevImage() {
-  if (!images.value?.length) return
+  if (!props.images?.length) return
   currentIndex.value =
-    (currentIndex.value - 1 + images.value.length) % images.value.length
+    (currentIndex.value - 1 + props.images.length) % props.images.length
   updateDialogImage()
 }
 
@@ -152,8 +148,8 @@ function handleKeys(e) {
  * Pagination (Infinite Scroll)
  * =======================================================*/
 function loadMore() {
-  if (!images.value || loadingMore.value) return
-  if (visibleCount.value >= images.value.length) return
+  if (!props.images || loadingMore.value) return
+  if (visibleCount.value >= props.images.length) return
 
   loadingMore.value = true
   visibleCount.value += BATCH_SIZE

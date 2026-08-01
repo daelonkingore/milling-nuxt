@@ -6,10 +6,13 @@ import netlifyIdentity from 'netlify-identity-widget'
 
 const file = ref(null)
 const selectedFolder = ref(null)
-const images = ref([])
 const uploading = ref(false)
 const user = ref(null)       // track logged-in user
 const loadingUser = ref(true) // track identity initialization
+const {
+  images,
+  loadImages
+} = useCloudinaryImages()
 
 netlifyIdentity.init({
   showSignup: false // hide sign-up completely
@@ -19,7 +22,10 @@ netlifyIdentity.init({
 netlifyIdentity.on('login', u => {
   user.value = u
   netlifyIdentity.close()
-  loadImages() // load images immediately after login
+
+  if (selectedFolder.value) {
+    loadImages(selectedFolder.value)
+  }
 })
 
 netlifyIdentity.on('logout', () => {
@@ -34,16 +40,12 @@ onMounted(() => {
   loadingUser.value = false
 })
 
-async function loadImages() {
-  if (!selectedFolder.value || !user.value) return
-  const res = await fetch(
-    `/.netlify/functions/cloudinary-images?folder=${selectedFolder.value}`
-  )
-  images.value = await res.json()
-}
-
 // Watch folder changes
-watch(selectedFolder, loadImages, { immediate: true })
+watch(selectedFolder, folder => {
+  if (folder && user.value) {
+    loadImages(folder)
+  }
+}, { immediate: true })
 
 async function uploadImage() {
   if (!file.value || !selectedFolder.value || !user.value) return
@@ -62,6 +64,7 @@ async function uploadImage() {
 
 async function delImage(image) {
   if (!user.value) return
+  if (!image || !user.value) return
 
   const token = user.value.token.access_token
 
@@ -130,6 +133,7 @@ const canUpload = computed(() => {
     </v-btn>
 
     <Gallery
+        :images="images"
         :grid-cols="page.gallery.gridCols"
         :mobile-cols="page.gallery.mobileCols"
         :image-height="page.gallery.imageHeight"

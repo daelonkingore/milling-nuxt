@@ -1,21 +1,20 @@
 <script setup>
 import Gallery from '@/components/galleryGrid.vue'
 import { useDisplay } from 'vuetify'
+import { useCloudinaryImages } from '@/composables/useCloudinaryImages'
 
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 
-const page = {
-  title: 'HAVE YOU SEEN MY WOOD?',
-
-  gallery: {
-    gridCols: 4,
-    mobileCols: 2,
-    imageHeight: '300px',
-    contain: false
-  }
-}
-
 const selectedFolder = ref(null)
+
+const {
+  images,
+  loadImages
+} = useCloudinaryImages()
+
+watch(selectedFolder, folder => {
+  loadImages(folder)
+})
 </script>
 
 <template>
@@ -54,6 +53,7 @@ const selectedFolder = ref(null)
 
   <!-- ===== Gallery ===== -->
   <Gallery
+    :images="images"
     :grid-cols="page.gallery.gridCols"
     :mobile-cols="page.gallery.mobileCols"
     :image-height="page.gallery.imageHeight"
