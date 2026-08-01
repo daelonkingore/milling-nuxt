@@ -189,9 +189,12 @@ onUnmounted(() => {
  * Watchers
  * =======================================================*/
 // load images when folder changes
-watch(selectedFolder, () => {
-  visibleCount.value = BATCH_SIZE
-})
+watch(
+  () => props.modelValue,
+  () => {
+    visibleCount.value = BATCH_SIZE
+  }
+)
 
 // set default folder
 watch(
@@ -200,7 +203,8 @@ watch(
     if (folders.length && !selectedFolder.value) {
       selectedFolder.value = folders[0].value
     }
-  }
+  },
+  { immediate: true }
 )
 
 /* =========================================================
