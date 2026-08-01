@@ -14,11 +14,7 @@ export const handler = async (event) => {
   }
 
   try {
-    console.log("event.body:", event.body);
-
     const body = event.body ? JSON.parse(event.body) : {}
-    console.log("json parse body: " + body)
-
     const { public_id } = body
 
     const result = await cloudinary.uploader.destroy(public_id, {

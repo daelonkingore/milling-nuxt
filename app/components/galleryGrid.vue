@@ -265,7 +265,7 @@ function getImageUrl(img) {
               <v-btn
                 icon="mdi-delete"
                 color="red"
-                @click.stop="$emit('delete', image)"
+                @click.stop="$emit('delete', img)"
               />
             </v-card-actions>
         </v-card>
