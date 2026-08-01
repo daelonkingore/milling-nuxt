@@ -42,15 +42,6 @@ async function loadImages() {
   images.value = await res.json()
 }
 
-function mapCloudinaryImage(img) {
-  return {
-    url: img.secure_url,
-    public_id: img.public_id,
-    width: img.width,
-    height: img.height,
-  }
-}
-
 // Watch folder changes
 watch(selectedFolder, loadImages, { immediate: true })
 
@@ -62,7 +53,7 @@ async function uploadImage() {
   uploading.value = true
   try {
     const result = await upload(file.value, selectedFolder.value, token)
-    images.value.unshift(mapCloudinaryImage(result))
+    images.value.unshift(result)
   } finally {
     uploading.value = false
     file.value = null
