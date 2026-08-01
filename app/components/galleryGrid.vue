@@ -108,13 +108,9 @@ const visibleImages = computed(() =>
  * =======================================================*/
 const optimizedImageMax = 1200
 
-function showDialog(image) {
-  const index = props.images.findIndex(
-    img => getImageUrl(img) === getImageUrl(image)
-  )
-
+function showDialog(imageUrl, index) {
   currentIndex.value = index
-  updateDialogImage()
+  imgForDialog.value = optimize(imageUrl, optimizedImageMax)
   dialogVisible.value = true
 }
 
@@ -194,10 +190,7 @@ onUnmounted(() => {
  * =======================================================*/
 // load images when folder changes
 watch(selectedFolder, () => {
-  if (selectedFolder.value) {
-    refresh()
-    visibleCount.value = BATCH_SIZE
-  }
+  visibleCount.value = BATCH_SIZE
 })
 
 // set default folder
@@ -207,8 +200,7 @@ watch(
     if (folders.length && !selectedFolder.value) {
       selectedFolder.value = folders[0].value
     }
-  },
-  { immediate: true }
+  }
 )
 
 /* =========================================================

@@ -3,6 +3,7 @@ import { ref, watch, computed, onMounted } from 'vue'
 import Gallery from '@/components/galleryGrid.vue'
 import { upload } from '@/composables/handleImages'
 import netlifyIdentity from 'netlify-identity-widget'
+import { useCloudinaryImages } from '@/composables/useCloudinaryImages'
 
 const file = ref(null)
 const selectedFolder = ref(null)
@@ -36,7 +37,15 @@ netlifyIdentity.on('logout', () => {
 // Check if already logged in
 onMounted(() => {
   const current = netlifyIdentity.currentUser()
-  if (current) user.value = current
+
+  if (current) {
+    user.value = current
+
+    if (selectedFolder.value) {
+      loadImages(selectedFolder.value)
+    }
+  }
+
   loadingUser.value = false
 })
 
@@ -45,7 +54,7 @@ watch(selectedFolder, folder => {
   if (folder && user.value) {
     loadImages(folder)
   }
-}, { immediate: true })
+})
 
 async function uploadImage() {
   if (!file.value || !selectedFolder.value || !user.value) return
@@ -63,14 +72,9 @@ async function uploadImage() {
 }
 
 async function delImage(image) {
-  if (!user.value) return
   if (!image || !user.value) return
 
   const token = user.value.token.access_token
-
-  console.log("image: " + image)
-  console.log(JSON.stringify(image, null, 2))
-  console.log("image.public_id: " + image?.public_id)
 
   await fetch('/.netlify/functions/deleteImage', {
     method: 'POST',
@@ -82,7 +86,7 @@ async function delImage(image) {
   })
 
   images.value = images.value.filter(img => img.public_id !== image.public_id)
-  await loadImages()
+  await loadImages(selectedFolder.value)
 }
 
 function login() {
