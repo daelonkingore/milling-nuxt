@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   pages: true,
-  ssr: false,
+  ssr: true,
   devtools: { enabled: false },
 
   css: [
