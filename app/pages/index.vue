@@ -31,7 +31,7 @@ const heroBlock = {
       subtitle: "Get ready for your next project",
       button: {
         text: "Check Out My Wood",
-        to: "/wood"
+        to: "/gallery"
       }
     },
     {
@@ -93,7 +93,7 @@ const resolveComponent = (type) => {
               Milling Services, 
           </router-link>
           or see some examples of 
-          <router-link to='/wood' >
+          <router-link to='/gallery' >
               wood slabs and rounds 
           </router-link>
           for your next woodworking project! </span>

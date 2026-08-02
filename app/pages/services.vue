@@ -2,8 +2,6 @@
 import ImageWithText from '@/components/imageWithText.vue'
 import { useDisplay } from 'vuetify'
 import PricingSection from '@/sections/PricingSection.vue'
-import FaqSection from '@/sections/FaqSection.vue'
-import Accordion from '~/components/Accordion.vue'
 import EmbededVideo from '~/components/EmbedVideo.vue'
 
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
@@ -33,7 +31,7 @@ const pageData = {
         { label: '45" or more', price: '$125' }
       ],
 
-      note: "2 hour minimum.\n$30 stationary saw blade replacement\n$100 blade replacement (chainsaw)",
+      note: "2 hour minimum.\n$30 stationary saw blade replacement\n$100 chainsaw blade replacement",
 
       dimensions: {
         title: "Example Dimensions",
@@ -45,8 +43,8 @@ const pageData = {
       },
 
       contact: {
-        phone: "(555)555-5555",
-        email: "example@gmail.com"
+        phone: "(417)360-2260",
+        email: "millingbydarrell@gmail.com"
       }
     }
   },
