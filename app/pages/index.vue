@@ -53,7 +53,6 @@ const pageData = {
   subtitle: "MILLING IN OZARK MISSOURI",
 }
 
-
 const resolveComponent = (type) => {
   const map = {
     imageWithText: ImageWithText,
@@ -61,6 +60,50 @@ const resolveComponent = (type) => {
   }
   return map[type]
 }
+
+const url = 'https://millingbydarrell.com'
+const title = 'Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
+const description = 'Custom wood milling, live edge slabs, and straight edge lumber in Ozark, Springfield, and Nixa Missouri.'
+const image = 'https://millingbydarrell.com/images/working/milling2.jpg'
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: url,
+  ogType: 'website',
+  ogImage: image,
+})
+
+useSchemaOrg([
+  defineWebPage({
+    name: title,
+    url,
+    description,
+  }),
+
+  defineLocalBusiness({
+    name: 'Milling By Darrell',
+    url,
+    areaServed: [
+      'Ozark',
+      'Springfield',
+      'Nixa',
+      'Republic',
+      'Branson'
+    ]
+  })
+])
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: url
+    }
+  ]
+})
 </script>
 
 <template>
