@@ -18,14 +18,14 @@
     </v-main>
 
     <form
-      name="contact"
+      name="contact3"
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
       hidden
     >
       <input name="bot-field" />
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="contact3" />
 
       <input
         type="email"
