@@ -90,13 +90,13 @@ const submitForm = async () => {
       </v-card-text>
       <v-form
         ref="formRef"
-        name="contact3"
+        name="contact"
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
         @submit.prevent="submitForm"
       >
-        <input type="hidden" name="form-name" value="contact3" />
+        <input type="hidden" name="form-name" value="contact" />
         <p style="display:none;">
           <label>
             Don't fill this out if you're human:

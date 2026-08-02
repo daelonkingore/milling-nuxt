@@ -183,7 +183,7 @@ export const handler: Handler = async (event) => {
     // Forward to Netlify Forms
     //
     const params = new URLSearchParams({
-      "form-name": "contact3",
+      "form-name": "contact",
       "bot-field": data["bot-field"] ?? "",
       milling_customer_email: email,
       milling_message: message,
