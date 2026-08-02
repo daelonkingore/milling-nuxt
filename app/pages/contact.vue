@@ -80,9 +80,9 @@ useHead({
   </h1>
 
   <!-- EMAIL FORM -->
-  <div class="email-form">
+  <!-- <div class="email-form">
     <EmailForm />
-  </div>
+  </div> -->
 
   <!-- CONTACT HEADER -->
   <h2 :class="mobile ? 'h2-subheading mb-9' : 'loud-header-h2 mb-10'">

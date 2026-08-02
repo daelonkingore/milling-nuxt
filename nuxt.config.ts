@@ -42,7 +42,8 @@ export default defineNuxtConfig({
     '@nuxtjs/robots', 
     '@nuxtjs/seo', 
     'nuxt-schema-org',
-    'nuxt-seo-utils'],
+    'nuxt-seo-utils',
+    'vuetify-nuxt-module'],
   site: {
     url: 'https://millingbydarrell.com/',
     name: 'Wood Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
@@ -62,6 +63,13 @@ export default defineNuxtConfig({
       type: 'Organization',
       name: 'Milling by Darrell LLC',
       logo: '/logo.png'
+    }
+  },
+  vuetify: {
+    vuetifyOptions: {
+      theme: {
+        defaultTheme: 'dark'
+      }
     }
   }
 })
