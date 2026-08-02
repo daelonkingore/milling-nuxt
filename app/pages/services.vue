@@ -66,7 +66,7 @@ const pageData = {
 }
 
 const url = 'https://millingbydarrell.com/services'
-const title = 'Custom Wood Milling Services in Ozark & Springfield, MO | Milling By Darrell'
+const title = 'Services - Custom Wood Milling Services in Ozark & Springfield, MO | Milling By Darrell'
 const description = 'Professional portable sawmill services in Ozark, Springfield, Nixa, and southwest Missouri. Custom lumber milling, live-edge slabs, and on-site milling available.'
 const image = 'https://millingbydarrell.com/images/working/milling1.jpg'
 

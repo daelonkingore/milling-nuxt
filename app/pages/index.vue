@@ -62,7 +62,7 @@ const resolveComponent = (type) => {
 }
 
 const url = 'https://millingbydarrell.com'
-const title = 'Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
+const title = 'Home - Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
 const description = 'Custom wood milling, live edge slabs, and straight edge lumber in Ozark, Springfield, and Nixa Missouri.'
 const image = 'https://millingbydarrell.com/images/working/milling2.jpg'
 

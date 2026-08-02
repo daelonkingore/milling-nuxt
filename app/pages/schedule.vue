@@ -11,7 +11,7 @@
   }
   
 const url = 'https://millingbydarrell.com/schedule'
-const title = 'Scheduling appointments for Custom Wood Milling and lumber pickup in Ozark, MO | Milling By Darrell'
+const title = 'Scheduling - Appointments for Custom Wood Milling and lumber pickup in Ozark, MO | Milling By Darrell'
 const description = 'Scheduling wood pickup and milling appointments for Milling By Darrell in Ozark, Springfield, Nixa, and Southwest Missouri.'
 const image = 'https://millingbydarrell.com/images/working/closeup-mill.jpg'
 
