@@ -1,14 +1,46 @@
 <script setup>
-    import { useDisplay } from 'vuetify';
-    const { mobile } = useDisplay({ mobileBreakpoint: 960 });
+  import { useDisplay } from 'vuetify';
+  const { mobile } = useDisplay({ mobileBreakpoint: 960 });
 
-    const calendly = useCalendly()
-    const openWoodPickupCalendly = () => {
-        calendly.showPopupWidget('https://calendly.com/daelonkingore/30min')
+  const calendly = useCalendly()
+  const openWoodPickupCalendly = () => {
+      calendly.showPopupWidget('https://calendly.com/daelonkingore/30min')
+  }
+  const openMillingCalendly = () => {
+      calendly.showPopupWidget('https://calendly.com/daelonkingore/milling-job')
+  }
+  
+const url = 'https://millingbydarrell.com/schedule'
+const title = 'Scheduling appointments for Custom Wood Milling and lumber pickup in Ozark, MO | Milling By Darrell'
+const description = 'Scheduling wood pickup and milling appointments for Milling By Darrell in Ozark, Springfield, Nixa, and Southwest Missouri.'
+const image = 'https://millingbydarrell.com/images/working/closeup-mill.jpg'
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: url,
+  ogType: 'website',
+  ogImage: image,
+})
+
+useSchemaOrg([
+  defineWebPage({
+    name: title,
+    url,
+    description,
+  }),
+])
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: url
     }
-    const openMillingCalendly = () => {
-        calendly.showPopupWidget('https://calendly.com/daelonkingore/milling-job')
-    }
+  ]
+})
 </script>
 
 <template>
@@ -35,6 +67,8 @@
         rounded="xl"
         elevation="4"
       >
+        <span class="textbox-title">Schedule Milling Job</span>
+        <hr>
         <p class="flex-grow-1">
           Use this to schedule a milling job. I will come out and mill your logs or
           stumps to your chosen dimensions. See the 
@@ -50,7 +84,7 @@
           type="submit"
           @click="openMillingCalendly"
         >
-          Schedule a milling job
+          Schedule a Milling Job
         </v-btn>
       </v-card>
     </v-col>
@@ -62,6 +96,8 @@
         rounded="xl"
         elevation="4"
       >
+        <span class="textbox-title">Schedule Wood Pickup</span>
+        <hr>
         <div class="flex-grow-1">
           <p>
             Use this to schedule a time to come to my location and look at what
@@ -81,7 +117,7 @@
           type="submit"
           @click="openWoodPickupCalendly"
         >
-          Schedule a wood pickup
+          Schedule a Wood Pickup
         </v-btn>
       </v-card>
     </v-col>
@@ -96,6 +132,13 @@
 </template>
 
 <style scoped>
+    hr {
+      width: 100%;
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 0;
+    }
+
     .v-card {
         margin: 10px auto;
     }

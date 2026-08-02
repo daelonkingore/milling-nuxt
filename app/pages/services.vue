@@ -52,18 +52,50 @@ const pageData = {
   travelLimits: 
     {
       title: "Travel Limits",
-      image: new URL('@/assets/working/milling1.jpg', import.meta.url).href,
-      layout: "right",
+      image: new URL('@/assets/working/milling2.jpg', import.meta.url).href,
+      layout: "left",
       content: "Example text."
     },
 
   faq: {
     title: "Frequently Asked Questions",
-    image: new URL('@/assets/working/milling1.jpg', import.meta.url).href,
+    image: new URL('@/assets/working/milling3.jpg', import.meta.url).href,
     layout: "left",
   },
 
 }
+
+const url = 'https://millingbydarrell.com/services'
+const title = 'Custom Wood Milling Services in Ozark & Springfield, MO | Milling By Darrell'
+const description = 'Professional portable sawmill services in Ozark, Springfield, Nixa, and southwest Missouri. Custom lumber milling, live-edge slabs, and on-site milling available.'
+const image = 'https://millingbydarrell.com/images/working/milling1.jpg'
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: url,
+  ogType: 'website',
+  ogImage: image,
+})
+
+useSchemaOrg([
+  defineWebPage({
+    name: title,
+    url,
+    description,
+  }),
+])
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: url
+    }
+  ]
+})
 </script>
 
 <template>
@@ -71,6 +103,26 @@ const pageData = {
   <h1 :class="mobile ? 'pt-6 main-header-small' : 'main-header'" class="header-color main-header-spacing mb-8">
     {{ pageData.heading }}
   </h1>
+
+  <!-- TOP IMAGES -->
+  <v-row class="services-pics-row">
+    <v-col
+      v-for="(img, i) in pageData.topImages"
+      :key="i"
+      cols="12"
+      md="4"
+      class="d-flex justify-center"
+      v-show="mobile ? i === 1 : true"
+    >
+      <v-img
+        cover
+        rounded
+        class="working-img"
+        :src="img"
+        eager
+      />
+    </v-col>
+  </v-row>
 
   <!-- SERVICES HEADER -->
   <h2 :class="mobile ? 'h2-subheading mb-4' : 'loud-header-h2 mb-7'">
@@ -108,7 +160,7 @@ const pageData = {
 
     <ImageWithText 
       :imageUrl="pageData.faq.image"
-      :layout="left"
+      layout="left"
     >
       <div class="text-column">
         <span class="textbox-title">{{ pageData.faq.title }}</span>
@@ -138,26 +190,6 @@ const pageData = {
   <EmbededVideo 
     url="https://www.youtube.com/embed/-AJfAfg8y0E"
   />
-
-  <!-- TOP IMAGES -->
-  <v-row class="services-pics-row">
-    <v-col
-      v-for="(img, i) in pageData.topImages"
-      :key="i"
-      cols="12"
-      md="4"
-      class="d-flex justify-center"
-      v-show="mobile ? i === 1 : true"
-    >
-      <v-img
-        cover
-        rounded
-        class="working-img"
-        :src="img"
-        eager
-      />
-    </v-col>
-  </v-row>
 </template>
 
 <style scoped>
