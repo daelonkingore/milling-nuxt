@@ -63,10 +63,10 @@ const submitForm = async () => {
 
     status.value = "success"
     form.value = {
-      email: '',
-      message: '',
+      milling_customer_email: "",
+      milling_message: "",
       submittedAt: Date.now(),
-      'bot-field': ''
+      "bot-field": ""
     }
     formRef.value.resetValidation()
   } catch (error) {
