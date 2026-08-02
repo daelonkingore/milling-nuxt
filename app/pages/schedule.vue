@@ -59,8 +59,13 @@ useHead({
         </v-card>
   </v-container class="setWidth">
 <v-container class="flex-buttons pa-0">
-  <v-row class="ma-0" align="stretch">
-    <v-col cols="12" md="6" class="d-flex">
+  <v-row
+    class="ma-0"
+    justify="center"
+    align="stretch"
+    dense
+  >
+    <v-col class="d-flex">
       <v-card
         :class="mobile ? 'p-text-size-sm' : 'p-text-size-md'"
         class="pa-6 p-container p-text d-flex flex-column flex-grow-1"
@@ -71,12 +76,11 @@ useHead({
         <hr>
         <p class="flex-grow-1">
           Use this to schedule a milling job. I will come out and mill your logs or
-          stumps to your chosen dimensions. See the 
-          <router-link to='/services' >
-              Milling Services
+          stumps to your chosen dimensions. See the
+          <router-link to="/services">
+            Milling Services
           </router-link>
-          page for pricing
-          and more info.
+          page for pricing and more info.
         </p>
 
         <v-btn
@@ -89,7 +93,7 @@ useHead({
       </v-card>
     </v-col>
 
-    <v-col cols="12" md="6" class="d-flex">
+    <v-col class="d-flex">
       <v-card
         :class="mobile ? 'p-text-size-sm' : 'p-text-size-md'"
         class="pa-6 p-container p-text d-flex flex-column flex-grow-1"
@@ -125,9 +129,9 @@ useHead({
 </v-container>
 
   <!-- EMAIL FORM -->
-  <div class="email-form">
+  <!-- <div class="email-form">
     <EmailForm />
-  </div>
+  </div> -->
 
 </template>
 
@@ -136,44 +140,53 @@ useHead({
       width: 100%;
       border: 0;
       border-top: 1px solid #ccc;
-      margin: 0;
-    }
-
-    .v-card {
-        margin: 10px auto;
-    }
-
-    .setWidth {
-        width: 100%;
     }
 
     .flex-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        padding-bottom: 10px;
-        max-width: 1600px;
-        padding-left: 20px;
-        padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+
+  .flex-buttons .v-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .flex-buttons .v-col {
+    flex: 1 1 0;
+    max-width: 50%;
+  }
+
+  .v-card {
+    width: 100%;
+    height: 80%;
+  }
+
+  .submit-button {
+    background-color: #438a4d;
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    .flex-buttons .v-row {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .flex-buttons .v-col {
+      max-width: 100%;
     }
 
     .submit-button {
-        background-color: #438a4d;
-        width: 200px;
-        margin: 0 auto;
+      width: 100%;
+      max-width: 300px;
     }
-
-@media (max-width: 600px) {
-    .flex-buttons {
-        flex-direction: column;
-        align-items: center;
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-
-    .submit-button {
-        width: 100%;
-        max-width: 300px;
-    }
-}
+  }
 </style>
