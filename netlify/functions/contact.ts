@@ -204,8 +204,10 @@ export const handler: Handler = async (event) => {
     );
 
     if (!response.ok) {
+      console.error("Failed to submit Form")
       throw new Error("Unable to submit form");
     }
+    console.log("Emailing response was ok.")
 
     return {
       statusCode: 200,
