@@ -43,5 +43,14 @@ export async function upload(file, folder, token, maxWidth = 2000, quality = 0.8
     body: formData,
   });
 
-  return await res.json();
+  const result = await res.json();
+
+  return {
+    public_id: result.public_id,
+    url: result.secure_url,
+    alt: result.public_id.split('/').pop() || '',
+    folder: result.folder,
+    width: result.width,
+    height: result.height,
+  };
 }

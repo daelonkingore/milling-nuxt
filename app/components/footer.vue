@@ -1,7 +1,7 @@
 <template>
     <v-footer padless>
         <v-container class="text-caption text-center">
-            <strong>© {{ new Date().getFullYear() }} — Company name - All Rights Reserved</strong>
+            <strong>© 2025 — Milling By Darrell, LLC - All Rights Reserved</strong>
             <br><div class="small-words-footer">Website created by Daelon Kingore</div>
         </v-container>
     </v-footer>

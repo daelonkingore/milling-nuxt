@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, watchEffect, computed, onMounted, onUnmounted } from 'vue'
+import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import { useDisplay } from 'vuetify'
 
 /* =========================================================
@@ -11,6 +11,10 @@ const { mobile, smAndDown } = useDisplay()
  * Props
  * =======================================================*/
 const props = defineProps({
+  images: {
+    type: Array,
+    default: () => []
+  },
   foldersEndpoint: { type: String, default: '/api/cloudinary-folders' },
   imagesEndpoint: { type: String, default: '/api/cloudinary-images' },
 
@@ -20,13 +24,22 @@ const props = defineProps({
 
   imageHeight: { type: String, default: '250px' },
   contain: { type: Boolean, default: true },
-  deletable: { type: Boolean, default: false }
+  deletable: { type: Boolean, default: false },
+  modelValue: String,
 })
+
+const emit = defineEmits([
+  'delete',
+  'update:modelValue',
+])
 
 /* =========================================================
  * State
  * =======================================================*/
-const selectedFolder = ref(null)
+const selectedFolder = computed({
+  get: () => props.modelValue,
+  set: value => emit('update:modelValue', value)
+})
 
 // dialog
 const dialogVisible = ref(false)
@@ -42,38 +55,10 @@ const loadingMore = ref(false)
 const sentinel = ref(null)
 let observer
 
-const emit = defineEmits(['delete'])
-
 /* =========================================================
  * Fetching
  * =======================================================*/
 const { data: folders } = await useFetch(props.foldersEndpoint)
-
-const { data: images, refresh } = await useFetch(
-  () =>
-    selectedFolder.value
-      ? `${props.imagesEndpoint}?folder=${selectedFolder.value}`
-      : null,
-  { immediate: false }
-)
-
-/* =========================================================
- * Watchers
- * =======================================================*/
-// load images when folder changes
-watch(selectedFolder, () => {
-  if (selectedFolder.value) {
-    refresh()
-    visibleCount.value = BATCH_SIZE
-  }
-})
-
-// set default folder
-watchEffect(() => {
-  if (folders.value?.length && !selectedFolder.value) {
-    selectedFolder.value = folders.value[0]
-  }
-})
 
 /* =========================================================
  * Computed
@@ -87,19 +72,35 @@ const dialogClass = computed(() =>
 )
 
 const folderLabels = {
+  'wood-slabs': 'Wood Slabs',
+  'wood-rounds': 'Wood Rounds',
+  'beams-and-mantles': 'Beams and Mantles',
   'logs-to-mill': 'Logs to Mill',
-  'background-imgs': 'Background Images'
+  'submitted': 'Customer Creations',
+  'working': 'Milling in Action',
+  'people': 'The People Behind It',
 }
 
+const folderOrder = Object.keys(folderLabels)
+
 const formattedFolders = computed(() =>
-  (folders.value || []).map(folder => ({
-    title: folderLabels[folder] || folder,
-    value: folder
-  }))
+  (folders.value || [])
+    .slice() // avoid mutating the original array
+    .sort((a, b) => {
+      const aIndex = folderOrder.indexOf(a)
+      const bIndex = folderOrder.indexOf(b)
+
+      // Put unknown folders after the known ones
+      return (aIndex === -1 ? Infinity : aIndex) - (bIndex === -1 ? Infinity : bIndex)
+    })
+    .map(folder => ({
+      title: folderLabels[folder] || folder,
+      value: folder,
+    }))
 )
 
 const visibleImages = computed(() =>
-  images.value?.slice(0, visibleCount.value) || []
+  props.images?.slice(0, visibleCount.value) || []
 )
 
 /* =========================================================
@@ -107,31 +108,27 @@ const visibleImages = computed(() =>
  * =======================================================*/
 const optimizedImageMax = 1200
 
-function showDialog(image) {
-  const index = images.value.findIndex(
-    img => getImageUrl(img) === getImageUrl(image)
-  )
-
+function showDialog(imageUrl, index) {
   currentIndex.value = index
-  updateDialogImage()
+  imgForDialog.value = optimize(imageUrl, optimizedImageMax)
   dialogVisible.value = true
 }
 
 function updateDialogImage() {
-  const img = images.value[currentIndex.value]
+  const img = props.images[currentIndex.value]
   imgForDialog.value = optimize(getImageUrl(img), optimizedImageMax)
 }
 
 function nextImage() {
-  if (!images.value?.length) return
-  currentIndex.value = (currentIndex.value + 1) % images.value.length
+  if (!props.images?.length) return
+  currentIndex.value = (currentIndex.value + 1) % props.images.length
   updateDialogImage()
 }
 
 function prevImage() {
-  if (!images.value?.length) return
+  if (!props.images?.length) return
   currentIndex.value =
-    (currentIndex.value - 1 + images.value.length) % images.value.length
+    (currentIndex.value - 1 + props.images.length) % props.images.length
   updateDialogImage()
 }
 
@@ -147,8 +144,8 @@ function handleKeys(e) {
  * Pagination (Infinite Scroll)
  * =======================================================*/
 function loadMore() {
-  if (!images.value || loadingMore.value) return
-  if (visibleCount.value >= images.value.length) return
+  if (!props.images || loadingMore.value) return
+  if (visibleCount.value >= props.images.length) return
 
   loadingMore.value = true
   visibleCount.value += BATCH_SIZE
@@ -187,6 +184,28 @@ onUnmounted(() => {
     observer.unobserve(sentinel.value)
   }
 })
+
+/* =========================================================
+ * Watchers
+ * =======================================================*/
+// load images when folder changes
+watch(
+  () => props.modelValue,
+  () => {
+    visibleCount.value = BATCH_SIZE
+  }
+)
+
+// set default folder
+watch(
+  formattedFolders,
+  folders => {
+    if (folders.length && !selectedFolder.value) {
+      selectedFolder.value = folders[0].value
+    }
+  },
+  { immediate: true }
+)
 
 /* =========================================================
  * Helpers
@@ -238,7 +257,7 @@ function getImageUrl(img) {
               <v-btn
                 icon="mdi-delete"
                 color="red"
-                @click.stop="$emit('delete', image)"
+                @click.stop="$emit('delete', img)"
               />
             </v-card-actions>
         </v-card>

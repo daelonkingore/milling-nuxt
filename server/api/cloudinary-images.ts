@@ -1,13 +1,11 @@
-// /server/api/cloudinary-images.ts
-
 import { v2 as cloudinary } from 'cloudinary'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
 
   cloudinary.config({
-    cloud_name: config.public.cloudinaryCloudName,
-    api_key: config.public.cloudinaryApiKey,
+    cloud_name: config.cloudinaryCloudName,
+    api_key: config.cloudinaryApiKey,
     api_secret: config.cloudinaryApiSecret,
   })
 
@@ -23,16 +21,20 @@ export default defineEventHandler(async (event) => {
     .execute()
 
   type GalleryImage = {
-    id: string
+    public_id: string
     url: string
     alt: string
     folder: string
+    width: number
+    height: number
   }
 
   return result.resources.map((img: any): GalleryImage => ({
-    id: img.public_id,
+    public_id: img.public_id,
     url: img.secure_url,
     alt: img.public_id.split('/').pop() || '',
     folder: img.folder,
+    width: img.width,
+    height: img.height,
   }))
 })

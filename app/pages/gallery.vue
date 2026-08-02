@@ -1,21 +1,30 @@
 <script setup>
+import { ref, watch } from 'vue'
 import Gallery from '@/components/galleryGrid.vue'
 import { useDisplay } from 'vuetify'
+import { useCloudinaryImages } from '@/composables/useCloudinaryImages'
+
 
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 
+const selectedFolder = ref(null)
+
+const {
+  images,
+  loadImages
+} = useCloudinaryImages()
+
+watch(
+  selectedFolder,
+  folder => {
+    if (folder) {
+      loadImages(folder)
+    }
+  },
+  { immediate: true }
+)
+
 const page = {
-  title: 'HAVE YOU SEEN MY WOOD?',
-
-  description: `
-    Below are the examples of the kind of wood I have to offer.
-    Visit My Marketplace Listings for the most updated stock.
-    Contact me/us for more information.
-  `,
-
-  marketplaceUrl: 'https://www.facebook.com/marketplace',
-  contactUrl: '/contact',
-
   gallery: {
     gridCols: 4,
     mobileCols: 2,
@@ -23,6 +32,38 @@ const page = {
     contain: false
   }
 }
+
+const url = 'https://millingbydarrell.com/gallery'
+const title = 'Gallery - Images for Custom Wood Milling in Ozark, MO | Milling By Darrell'
+const description = 'Images for Milling By Darrell. Live edge wood slabs and rounds and dimensional lumber in Ozark, Springfield, and Nixa Missouri.'
+const image = 'https://millingbydarrell.com/images/working/slabs_on_trailer_chainsaw.jpg'
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: url,
+  ogType: 'website',
+  ogImage: image,
+})
+
+useSchemaOrg([
+  defineWebPage({
+    name: title,
+    url,
+    description,
+  }),
+])
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: url
+    }
+  ]
+})
 </script>
 
 <template>
@@ -31,7 +72,7 @@ const page = {
     :class="mobile ? 'pt-6 main-header-small' : 'main-header'"
     class="header-color main-header-spacing"
   >
-    {{ page.title }}
+    HAVE YOU SEEN MY WOOD?
   </h1>
 
   <!-- ===== Description Block ===== -->
@@ -44,14 +85,14 @@ const page = {
         </a>
         for the most updated stock.
         <br><br>
-        <router-link to="/contacts" >
+        <router-link to="/contact" >
             Contact me 
         </router-link>
         for more information, or set up a time to come look at what I have in person.
         <div :class="mobile ? 'even-smaller-text' : 'smaller-text'">
             <br>Choose <b>"Customer Creations"</b> from the dropdown below to see what customers have done with our wood!
             <br>If you want your creations to be included, simply take a good picture and 
-            <router-link to="/contacts" >
+            <router-link to="/contact" >
                 text or email 
             </router-link> it to us.
         </div>
@@ -61,9 +102,34 @@ const page = {
 
   <!-- ===== Gallery ===== -->
   <Gallery
+    :images="images"
     :grid-cols="page.gallery.gridCols"
     :mobile-cols="page.gallery.mobileCols"
     :image-height="page.gallery.imageHeight"
     :contain="page.gallery.contain"
+    v-model="selectedFolder"
   />
 </template>
+
+<style scoped>
+.smaller-text {
+    font-size: 18px;
+}
+
+.even-smaller-text {
+  font-size: 14px;
+}
+
+.loud-header {
+    margin-bottom: 0;
+}
+
+.p-text {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.v-container {
+    padding: 35px 0px;
+}
+</style>

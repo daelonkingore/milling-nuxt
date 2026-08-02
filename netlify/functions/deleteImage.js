@@ -1,9 +1,9 @@
 import { v2 as cloudinary } from 'cloudinary'
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: process.env.NUXT_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.NUXT_CLOUDINARY_API_KEY,
+  api_secret: process.env.NUXT_CLOUDINARY_API_SECRET,
 })
 
 export const handler = async (event) => {
@@ -14,7 +14,12 @@ export const handler = async (event) => {
   }
 
   try {
-    const { public_id } = JSON.parse(event.body)
+    console.log("event.body:", event.body);
+
+    const body = event.body ? JSON.parse(event.body) : {}
+    console.log("json parse body: " + body)
+
+    const { public_id } = body
 
     const result = await cloudinary.uploader.destroy(public_id, {
       resource_type: 'image',

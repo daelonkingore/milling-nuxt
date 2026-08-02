@@ -31,7 +31,7 @@ const heroBlock = {
       subtitle: "Get ready for your next project",
       button: {
         text: "Check Out My Wood",
-        to: "/wood"
+        to: "/gallery"
       }
     },
     {
@@ -51,32 +51,7 @@ const heroBlock = {
 const pageData = {
   title: "MILLING BY DARRELL",
   subtitle: "MILLING IN OZARK MISSOURI",
-
-  // sections: [
-  //   {
-  //     type: "imageWithText",
-  //     text: "Example Text",
-  //     imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770526415/wood_slabs2_i7vfqf.jpg",
-  //     layout: "left",
-  //     variant: "card"
-  //   },
-  //   {
-  //     type: "imageWithText",
-  //     text: "Example Text",
-  //     imageUrl: exampleImg,
-  //     layout: "right",
-  //     variant: "card"
-  //   },
-  //   {
-  //     type: "imageWithText",
-  //     text: "Example Text",
-  //     imageUrl: exampleImg,
-  //     layout: "left",
-  //     variant: "card"
-  //   }
-  // ]
 }
-
 
 const resolveComponent = (type) => {
   const map = {
@@ -85,6 +60,50 @@ const resolveComponent = (type) => {
   }
   return map[type]
 }
+
+const url = 'https://millingbydarrell.com'
+const title = 'Home - Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
+const description = 'Custom wood milling, live edge slabs, and straight edge lumber in Ozark, Springfield, and Nixa Missouri.'
+const image = 'https://millingbydarrell.com/images/working/milling2.jpg'
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogUrl: url,
+  ogType: 'website',
+  ogImage: image,
+})
+
+useSchemaOrg([
+  defineWebPage({
+    name: title,
+    url,
+    description,
+  }),
+
+  defineLocalBusiness({
+    name: 'Milling By Darrell',
+    url,
+    areaServed: [
+      'Ozark',
+      'Springfield',
+      'Nixa',
+      'Republic',
+      'Branson'
+    ]
+  })
+])
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: url
+    }
+  ]
+})
 </script>
 
 <template>
@@ -92,22 +111,18 @@ const resolveComponent = (type) => {
     {{ pageData.title }}
   </h1>
 
-  <component
-    :is="resolveComponent(heroBlock.type)"
-    :block="heroBlock"
-  />
+  <v-container fill-height fluid class="hero-row">
+    <component
+      :is="resolveComponent(heroBlock.type)"
+      :block="heroBlock"
+    />
+  </v-container>
 
   <h2 :class="mobile ? 'h2-subheading mb-6' : 'loud-header-h2'">
     {{ pageData.subtitle }}
   </h2>
 
   <v-container fluid class="mt-4 mb-4">
-    <!-- <component
-      v-for="(section, index) in pageData.sections"
-      :key="index"
-      :is="resolveComponent(section.type)"
-      v-bind="section"
-    /> -->
 
     <ImageWithText imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1770526415/wood_slabs2_i7vfqf.jpg" layout="left">
       <div class="text-column">
@@ -121,7 +136,7 @@ const resolveComponent = (type) => {
               Milling Services, 
           </router-link>
           or see some examples of 
-          <router-link to='/wood' >
+          <router-link to='/gallery' >
               wood slabs and rounds 
           </router-link>
           for your next woodworking project! </span>
@@ -151,6 +166,13 @@ const resolveComponent = (type) => {
 </template>
 
 <style scoped>
+    .hero-row {
+        margin-bottom: 5px;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
     .header-color {
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
