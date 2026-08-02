@@ -17,6 +17,26 @@
       <NuxtPage />
     </v-main>
 
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input name="bot-field" />
+      <input type="hidden" name="form-name" value="contact" />
+
+      <input
+        type="email"
+        name="milling_customer_email"
+      />
+
+      <textarea
+        name="milling_message"
+      ></textarea>
+    </form>
+
     <Footer class="max-height"/>
   </v-app>
 </template>
