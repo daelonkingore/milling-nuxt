@@ -105,7 +105,7 @@ const submitForm = async () => {
         <v-text-field
           v-model="form.email"
           name="email"
-          label="Your Email Address"
+          label="Email Address"
           type="email"
           :rules="emailRules"
           required
@@ -114,7 +114,7 @@ const submitForm = async () => {
         <v-textarea
           v-model="form.message"
           name="message"
-          label="Your Message"
+          label="Message"
           rows="7"
           :rules="messageRules"
           required

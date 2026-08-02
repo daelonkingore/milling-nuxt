@@ -23,6 +23,6 @@
 
 <style scoped>
   .max-height {
-    max-height: 75px;
+    max-height: 90px;
   }
 </style>

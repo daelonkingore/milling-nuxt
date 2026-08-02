@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
+    "nuxt-calendly": "^0.1.21",
     "vuetify-nuxt-module": "^0.19.5"
   }
 }
