@@ -10,35 +10,29 @@ const emailRules = [
 
 const messageRules = [
   v => !!v || 'Message is required',
-  v => v.length >= 10 || 'Message must be at least 10 characters',
-  v => v.length < 1000 || 'Message must be less than 1000 characters'
+  v => !v || v.length >= 10 || 'Message must be at least 10 characters',
+  v => !v || v.length < 1000 || 'Message must be less than 1000 characters'
 ]
 
 const form = ref({
-  email: '',
-  message: '',
+  milling_customer_email: '',
+  milling_message: '',
+  submittedAt: Date.now(),
   'bot-field': ''
 })
 
 const loading = ref(false)
 const status = ref(null) // null | success | error
-
-const encode = (data) => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&")
-}
+const errMsg = ref(null)
 
 const clearStatusAfterDelay = () => {
   setTimeout(() => {
     status.value = null
-  }, 6000) // 6 seconds
+  }, 10000) // 10 seconds
 }
 
-const submittedAt = ref(Date.now())
-
 const submitForm = async () => {
-  if (Date.now() - submittedAt.value < 4000) {  // if submit in under 4 sec
+  if (Date.now() - form.value.submittedAt < 4000) {  // if submit in under 4 sec
     return // likely bot (submitted too fast)
   }
 
@@ -50,26 +44,34 @@ const submitForm = async () => {
 
   loading.value = true
   status.value = null
+  errMsg.value = null
 
   try {
-    const response = await fetch("/", {
+    const response = await fetch("/.netlify/functions/contact", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": "contact",
-        ...form.value
-      })
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form.value)
     })
 
-    if (!response.ok) throw new Error("Network response was not ok")
+    const result = await response.json()
+
+    if (!response.ok) {
+      throw new Error(result.error || "Unknown error")
+    }
 
     status.value = "success"
-    form.value.email = ''
-    form.value.message = ''
-    form.value['bot-field'] = ''
+    form.value = {
+      milling_customer_email: "",
+      milling_message: "",
+      submittedAt: Date.now(),
+      "bot-field": ""
+    }
     formRef.value.resetValidation()
   } catch (error) {
     console.error(error)
+    errMsg.value = error.message
     status.value = "error"
   } finally {
     loading.value = false
@@ -103,18 +105,18 @@ const submitForm = async () => {
         </p>
 
         <v-text-field
-          v-model="form.email"
-          name="email"
-          label="Email Address"
+          v-model="form.milling_customer_email"
+          name="milling_customer_email"
+          label="Your Email Address"
           type="email"
           :rules="emailRules"
           required
         />
 
         <v-textarea
-          v-model="form.message"
-          name="message"
-          label="Message"
+          v-model="form.milling_message"
+          name="milling_message"
+          label="Your Message"
           rows="7"
           :rules="messageRules"
           required
@@ -146,7 +148,7 @@ const submitForm = async () => {
             class="mt-4"
             density="comfortable"
           >
-            Message failed. Please try again.
+            {{ errMsg ? errMsg : "Message failed. Please try again." }}
           </v-alert>
         </v-fade-transition>
 

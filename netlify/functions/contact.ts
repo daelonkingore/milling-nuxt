@@ -184,8 +184,12 @@ export const handler: Handler = async (event) => {
     //
     const params = new URLSearchParams({
       "form-name": "contact",
-      ...data
+      "bot-field": data["bot-field"] ?? "",
+      milling_customer_email: email,
+      milling_message: message,
     });
+
+    console.log(process.env.URL);
 
     const response = await fetch(
       `${process.env.URL}/`,
@@ -200,8 +204,10 @@ export const handler: Handler = async (event) => {
     );
 
     if (!response.ok) {
+      console.error("Failed to submit Form")
       throw new Error("Unable to submit form");
     }
+    console.log("Emailing response was ok.")
 
     return {
       statusCode: 200,
