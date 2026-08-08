@@ -359,5 +359,23 @@ const themeClass = computed(() =>
 
     border-radius: inherit;
   }
+
+  /* Right */
+.variant-card .layout-right .image {
+  border-radius: 0 0 14px 14px;
+}
+
+.variant-card .layout-right .text-box {
+  border-radius: 14px 14px 0 0;
+}
+
+/* Left */
+.variant-card .layout-left .image {
+  border-radius: 0 0 14px 14px;
+}
+
+.variant-card .layout-left .text-box {
+  border-radius: 14px 14px 0 0;
+}
 }
 </style>

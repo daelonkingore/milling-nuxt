@@ -1,6 +1,6 @@
 <script setup>
 // logo
-import logo from '@/assets/logo.png'
+import logo from '/logo.png'
 
 import { ref, watch, computed } from 'vue'
 import { useDisplay } from 'vuetify'

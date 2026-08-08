@@ -28,15 +28,15 @@ const pageData = {
 
   about: {
     text: "Client paragraph",
-    image: new URL('@/assets/wood-slabs/bug_cube.jpg', import.meta.url).href,
+    image: 'images/wood-slabs/bug_cube.jpg',
     imageLeft: "right",
     variant: "card"
   },
 
   galleryImages: [
-    new URL('@/assets/wood-slabs/bug_cube.jpg', import.meta.url).href,
-    new URL('@/assets/people/milling-big-wood.jpg', import.meta.url).href,
-    new URL('@/assets/wood-slabs/slabs_on_mill.jpg', import.meta.url).href,
+    'images/wood-slabs/bug_cube.jpg',
+    'images/people/milling-big-wood.jpg',
+    'images/wood-slabs/slabs_on_mill.jpg',
   ]
 }
 

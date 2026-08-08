@@ -3,8 +3,6 @@
     import HeroCarousel  from '@/components/heroCarousel.vue';
     import ImageWithText  from '@/components/imageWithText.vue';
     
-    import slabsOnMill from '@/assets/wood-slabs/slabs_on_mill.jpg'
-    
     const { mobile } = useDisplay({ mobileBreakpoint: 960 });
 
 const heroBlock = {
@@ -16,7 +14,7 @@ const heroBlock = {
   slides: [
     {
       type: "hero",
-      imageUrl: slabsOnMill,
+      imageUrl: "images/wood-slabs/slabs_on_mill.jpg",
       title: "Custom Milling Done Right",
       subtitle: "We turn raw logs into beautiful lumber",
       button: {
