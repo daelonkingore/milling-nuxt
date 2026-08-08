@@ -10,15 +10,15 @@ const pageData = {
   heading: "LET ME MILL FOR YOU",
 
   topImages: [
-    new URL('@/assets/working/milling1.jpg', import.meta.url).href,
-    new URL('@/assets/working/milling2.jpg', import.meta.url).href,
-    new URL('@/assets/working/milling3.jpg', import.meta.url).href,
+    'images/working/milling1.jpg',
+    'images/working/milling2.jpg',
+    'images/working/milling3.jpg',
   ],
 
   servicesHeading: "MILLING SERVICES",
 
   pricing: {
-    image: new URL('@/assets/working/milling1.jpg', import.meta.url).href,
+    image: 'images/people/men-working3.jpg',
     layout: "right",
 
     pricing: {
@@ -52,14 +52,14 @@ const pageData = {
   travelLimits: 
     {
       title: "Travel Limits",
-      image: new URL('@/assets/working/milling2.jpg', import.meta.url).href,
+      image: 'images/wood-slabs/slabs_on_trailer_chainsaw.jpg',
       layout: "left",
       content: "Example text."
     },
 
   faq: {
     title: "Frequently Asked Questions",
-    image: new URL('@/assets/working/milling3.jpg', import.meta.url).href,
+    image: 'images/wood-slabs/slabs-on-mill.jpg',
     layout: "left",
   },
 
@@ -193,6 +193,9 @@ useHead({
 </template>
 
 <style scoped>
+.h2-subheading {
+  margin-top: 30px
+}
 
 .p-text {
     max-width: 1000px;

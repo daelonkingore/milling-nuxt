@@ -28,15 +28,15 @@ const pageData = {
 
   about: {
     text: "Client paragraph",
-    image: new URL('@/assets/wood-slabs/bug_cube.jpg', import.meta.url).href,
+    image: 'images/wood-slabs/bug_cube.jpg',
     imageLeft: "right",
     variant: "card"
   },
 
   galleryImages: [
-    new URL('@/assets/wood-slabs/bug_cube.jpg', import.meta.url).href,
-    new URL('@/assets/people/milling-big-wood.jpg', import.meta.url).href,
-    new URL('@/assets/wood-slabs/slabs_on_mill.jpg', import.meta.url).href,
+    'images/wood-slabs/bug_cube.jpg',
+    'images/people/milling-big-wood.jpg',
+    'images/wood-slabs/slabs_on_mill.jpg',
   ]
 }
 
@@ -85,9 +85,9 @@ useHead({
   </div> -->
 
   <!-- CONTACT HEADER -->
-  <h2 :class="mobile ? 'h2-subheading mb-9' : 'loud-header-h2 mb-10'">
+  <!-- <h2 :class="mobile ? 'h2-subheading mb-9' : 'loud-header-h2 mb-10'">
     {{ pageData.subheading }}
-  </h2>
+  </h2> -->
 
   <!-- CONTACT CARD -->
   <ContactSection class="pa-0"
@@ -95,19 +95,18 @@ useHead({
   />
 
   <!-- ABOUT -->
-  <h3 :class="mobile ? 'h3-subheading mb-4' : 'loud-header-h3 mb-7'">
+  <h2 :class="mobile ? 'h3-subheading' : 'loud-header-h3 mb-7'">
     {{ pageData.aboutHeading }}
-  </h3>
+  </h2>
 
-  <v-container fluid>
     <ImageWithText
-        class="pt-7 img-height"
+        class="pt-4 img-height"
         imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1772417451/smileWithEquipment_jqswfm.jpg"
         layout="left"
     >
         <div class="text-content text-column">
             <span>
-              Hi. I'm Darrell, owner of Milling By Darrell, LLC. I started my passion of milling in 2024. The smell, the texture, the patterns, 
+              I'm Darrell, owner of Milling By Darrell, LLC. I started my passion of milling in 2024. The smell, the texture, the patterns, 
               and the colors of wood are beautiful and very appealing. 
             </span>
             <span>
@@ -121,11 +120,10 @@ useHead({
               as well as complete custom milling to fit your needs. Should you still have questions, my contact information is listed in this website. 
             </span>
             <span>
-            Feel  free to send me a message or give me a call. Remember, it's a great day to mill!
+            Feel  free to send me a message or give me a call. Remember, it's a great day to mill and go easy!
             </span>
         </div>
     </ImageWithText>
-  </v-container>
 
   <!-- IMAGE ROW -->
   <v-row class="contacts-pics-row">

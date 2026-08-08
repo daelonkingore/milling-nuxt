@@ -1,6 +1,6 @@
 <script setup>
 // logo
-import logo from '@/assets/logo.png'
+import logo from '/logo.png'
 
 import { ref, watch, computed } from 'vue'
 import { useDisplay } from 'vuetify'
@@ -36,9 +36,9 @@ const pageConfig = {
     },
     items: [
       { title: 'Milling Services', link: '/services' },
+      { title: 'Book an Appointment', link: '/schedule' },
       { title: 'Wood Slabs and Rounds', link: '/gallery' },
       { title: 'Contact Me', link: '/contact' },
-      { title: 'Book an Appointment', link: '/schedule' },
     ]
   },
   behavior: {
