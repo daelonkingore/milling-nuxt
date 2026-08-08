@@ -20,6 +20,13 @@ defineProps({
       elevation="4"
     >
       <p>
+        Visit the 
+        <router-link to='/gallery' >
+          <b>Scheduling </b>
+        </router-link>
+        tab to set up an appointment to start milling, or find time to buy my pre-cut lumber.
+      </p>
+      <p>
         {{ contacts.intro }}
         <a :href="contacts.facebookLink" target="_blank">
           <b>Facebook</b>

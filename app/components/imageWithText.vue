@@ -77,6 +77,7 @@ const themeClass = computed(() =>
       <!-- IMAGE -->
       <div class="image-box">
         <v-img
+        :aspect-ratio="16 / 9"
           :src="imageUrl"
           cover
           eager
@@ -159,7 +160,7 @@ const themeClass = computed(() =>
 
 .layout-overlay {
   position: relative;
-  display: block;
+  width: 100%;
   overflow: hidden;
   border-radius: 14px;
 }
@@ -172,8 +173,7 @@ const themeClass = computed(() =>
 .layout-overlay .image {
   display: block;
   width: 100%;
-  height: 635px;
-  object-fit: cover;
+  height: 300px;
 }
 
 .layout-overlay .text-box {
@@ -186,7 +186,7 @@ const themeClass = computed(() =>
   justify-content: center;
 
   padding: 40px;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.55);
   color: white;
 }
 
@@ -338,7 +338,7 @@ const themeClass = computed(() =>
 
   .layout-overlay .image-box {
     width: 100%;
-    height: 350px;
+    height: 200px;
   }
 
   .layout-overlay .image {

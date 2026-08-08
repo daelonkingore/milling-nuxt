@@ -24,6 +24,16 @@ const heroBlock = {
     },
     {
       type: "hero",
+      imageUrl: "images/people/men-working-big-wood.jpg",
+      title: "Schedule a Milling Job",
+      subtitle: "Let's mill something",
+      button: {
+        text: "Schedule Now",
+        to: "/schedule"
+      }
+    },
+    {
+      type: "hero",
       imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770526421/silverMaple_harnyr.jpg",
       title: "Wood Slabs or Rounds",
       subtitle: "Get ready for your next project",
