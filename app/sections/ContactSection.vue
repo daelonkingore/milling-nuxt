@@ -1,5 +1,6 @@
 <script setup>
 import { useDisplay } from 'vuetify'
+import ImageWithText from '@/components/imageWithText.vue'
 
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 
@@ -12,13 +13,13 @@ defineProps({
 </script>
 
 <template>
-  <v-container class="pa-0">
-    <v-card :class="mobile ? 'p-text-size-sm' : 'p-text-size-md'"
-      class="mx-auto pa-6 p-container p-text mt-0"
-      width="100%"
-      rounded="xl"
-      elevation="4"
+  <ImageWithText
+      imageUrl=""
+      layout="overlay"
+      class="contact-section-width"
+      :height="mobile ? '680px' : '500px'"
     >
+    <div :class="mobile ? 'p-text-size-sm-con' : 'p-text-size-md-con'">
       <p>
         Visit the 
         <router-link to='/gallery' >
@@ -68,8 +69,8 @@ defineProps({
             </a> for timelapses of my work, and more!
         </template>
       </p>
-    </v-card>
-  </v-container>
+    </div>
+  </ImageWithText>
 </template>
 
 <style scoped>
@@ -81,4 +82,27 @@ defineProps({
   margin: 10px;
   line-height: 28px;
 }
+
+.contact-section-width {
+  width: 85%;
+}
+
+.p-text-size-md-con {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.p-text-size-sm-con {
+  font-size: 16px;
+  width: 100%;
+  line-height: 1.3;
+}
+
+/* MOBILE */
+@media (max-width: 960px) {
+    .contact-section-width {
+      width: 100%;
+    }
+}
+
 </style>

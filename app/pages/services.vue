@@ -2,7 +2,6 @@
 import ImageWithText from '@/components/imageWithText.vue'
 import { useDisplay } from 'vuetify'
 import PricingSection from '@/sections/PricingSection.vue'
-import EmbededVideo from '~/components/EmbedVideo.vue'
 
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 
@@ -116,8 +115,7 @@ useHead({
     >
       <v-img
         cover
-        rounded
-        class="working-img"
+        class="working-img rounded-xl"
         :src="img"
         eager
       />
@@ -178,21 +176,28 @@ useHead({
   </v-container>
 
   <!-- SUMMARY -->
-  <div class="p-container">
-      <p :class="mobile ? 'p-text-size-sm' : 'p-text-size-lg'" class="p-text">
+   <ImageWithText
+    imageUrl=""
+    layout="overlay"
+    class="summary-width"
+    :height="mobile ? '300px' : '255px'"
+  >
+    <span>
+      <p>
           Have a downed tree you don't know what to do with?
           <br>Need custom milling for your project?
           <br><br>Slabs, rounds, whatever you need, I can cut it!<br><br>
           Bring your wood to me or let me come to you, either way, that log doesn't stand a chance against my saws!
       </p>
-  </div>
-
-  <EmbededVideo 
-    url="https://www.youtube.com/embed/-AJfAfg8y0E"
-  />
+    </span>
+  </ImageWithText>
 </template>
 
 <style scoped>
+.summary-width {
+  width: 75%;
+}
+
 .h2-subheading {
   margin-top: 30px
 }
@@ -222,5 +227,12 @@ useHead({
 
 .working-img {
     max-height: 400px;
+}
+
+/* MOBILE */
+@media (max-width: 960px) {
+    .summary-width {
+      width: 100%;
+    }
 }
 </style>
