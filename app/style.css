@@ -264,3 +264,38 @@ a:hover {
 .card {
   padding: 2em;
 }
+
+/* =========================
+   Use to make text boxes 
+   sit next to each other
+   like columns
+========================= */
+
+.textBoxColumns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.textBoxColumns > * {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================
+   Use on containers to ensure
+   all content uses the same
+   vertical height
+========================= */
+
+.text-spacing {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.text-spacing p {
+  margin-bottom: 1rem;
+}

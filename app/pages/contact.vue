@@ -137,8 +137,7 @@ useHead({
     >
       <v-img
         cover
-        rounded
-        class="working-img"
+        class="working-img rounded-xl"
         :src="img"
         eager
       />

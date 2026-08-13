@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import Gallery from '@/components/galleryGrid.vue'
 import { useDisplay } from 'vuetify'
 import { useCloudinaryImages } from '@/composables/useCloudinaryImages'
+import ImageWithText from '@/components/imageWithText.vue'
 
 
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
@@ -76,9 +77,13 @@ useHead({
   </h1>
 
   <!-- ===== Description Block ===== -->
-  <v-container>
-    <v-card flat color="transparent">
-      <v-card-text class="p-container p-text" :class="mobile ? 'p-text-size-sm' : 'p-text-size-lg'">
+    <ImageWithText
+      imageUrl=""
+      layout="overlay"
+      class="description-width"
+      :height="mobile ? '310px' : '300px'"
+    >
+      <div class="" :class="mobile ? 'p-text-size-sm-gal' : 'p-text-size-lg-gal'">
         Below are the examples of the kind of wood I have to offer.
         <a href="https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener noreferrer"> <!-- https://www.facebook.com/p/Milling-By-Darrell-61576174751276/ -->
             <b>Visit My Marketplace Listings</b>
@@ -96,9 +101,8 @@ useHead({
                 text or email 
             </router-link> it to us.
         </div>
-      </v-card-text>
-    </v-card>
-  </v-container>
+      </div>
+    </ImageWithText>
 
   <!-- ===== Gallery ===== -->
   <Gallery
@@ -112,6 +116,21 @@ useHead({
 </template>
 
 <style scoped>
+.description-width {
+  width: 75%;
+}
+
+.p-text-size-lg-gal {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.p-text-size-sm-gal {
+  font-size: 16px;
+  width: 100%;
+  line-height: 1.3;
+}
+
 .smaller-text {
     font-size: 18px;
 }
@@ -131,5 +150,12 @@ useHead({
 
 .v-container {
     padding: 35px 0px;
+}
+
+/* MOBILE */
+@media (max-width: 960px) {
+    .description-width {
+      width: 100%;
+    }
 }
 </style>

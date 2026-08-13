@@ -1,117 +1,118 @@
 <script setup>
-    import { useDisplay } from 'vuetify';
-    import HeroCarousel  from '@/components/heroCarousel.vue';
-    import ImageWithText  from '@/components/imageWithText.vue';
-    
-    const { mobile } = useDisplay({ mobileBreakpoint: 960 });
+  import { useDisplay } from 'vuetify';
+  import HeroCarousel  from '@/components/heroCarousel.vue';
+  import ImageWithText  from '@/components/imageWithText.vue';
+  import EmbededVideo from '~/components/EmbedVideo.vue'
+  
+  const { mobile } = useDisplay({ mobileBreakpoint: 960 });
 
-const heroBlock = {
-  type: "carousel",
+  const heroBlock = {
+    type: "carousel",
 
-  height: "70vh",
-  interval: 8000,
+    height: "70vh",
+    interval: 8000,
 
-  slides: [
-    {
-      type: "hero",
-      imageUrl: "images/wood-slabs/slabs_on_mill.jpg",
-      title: "Custom Milling Done Right",
-      subtitle: "We turn raw logs into beautiful lumber",
-      button: {
-        text: "View Services",
-        to: "/services"
+    slides: [
+      {
+        type: "hero",
+        imageUrl: "images/wood-slabs/slabs_on_mill.jpg",
+        title: "Custom Milling Done Right",
+        subtitle: "We turn raw logs into beautiful lumber",
+        button: {
+          text: "View Services",
+          to: "/services"
+        }
+      },
+      {
+        type: "hero",
+        imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1782668152/working/r2qvw9003qvhgqsyigqo.jpg",
+        title: "Schedule a Milling Job",
+        subtitle: "Let's mill something",
+        button: {
+          text: "Schedule Now",
+          to: "/schedule"
+        }
+      },
+      {
+        type: "hero",
+        imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770526421/silverMaple_harnyr.jpg",
+        title: "Wood Slabs or Rounds",
+        subtitle: "Get ready for your next project",
+        button: {
+          text: "Check Out My Wood",
+          to: "/gallery"
+        }
+      },
+      {
+        type: "hero",
+        imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770529906/wood-rounds/gcxyhe8tgp1ni7egvzoj.jpg",
+        title: "Contact Me",
+        subtitle: "Reach out for quotes and info",
+        button: {
+          text: "Contact",
+          to: "/contact"
+        }
       }
-    },
-    {
-      type: "hero",
-      imageUrl: "images/people/men-working-big-wood.jpg",
-      title: "Schedule a Milling Job",
-      subtitle: "Let's mill something",
-      button: {
-        text: "Schedule Now",
-        to: "/schedule"
-      }
-    },
-    {
-      type: "hero",
-      imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770526421/silverMaple_harnyr.jpg",
-      title: "Wood Slabs or Rounds",
-      subtitle: "Get ready for your next project",
-      button: {
-        text: "Check Out My Wood",
-        to: "/gallery"
-      }
-    },
-    {
-      type: "hero",
-      imageUrl: "https://res.cloudinary.com/dubulxjtb/image/upload/v1770529906/wood-rounds/gcxyhe8tgp1ni7egvzoj.jpg",
-      title: "Contact Me",
-      subtitle: "Reach out for quotes and info",
-      button: {
-        text: "Contact",
-        to: "/contact"
-      }
-    }
-  ]
-}
-
-
-const pageData = {
-  title: "MILLING BY DARRELL",
-  subtitle: "MILLING IN OZARK MISSOURI",
-}
-
-const resolveComponent = (type) => {
-  const map = {
-    imageWithText: ImageWithText,
-    carousel: HeroCarousel,
+    ]
   }
-  return map[type]
-}
 
-const url = 'https://millingbydarrell.com'
-const title = 'Home - Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
-const description = 'Custom wood milling, live edge slabs, and straight edge lumber in Ozark, Springfield, and Nixa Missouri.'
-const image = 'https://millingbydarrell.com/images/working/milling2.jpg'
 
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  ogUrl: url,
-  ogType: 'website',
-  ogImage: image,
-})
+  const pageData = {
+    title: "MILLING BY DARRELL",
+    subtitle: "MILLING IN OZARK MISSOURI",
+  }
 
-useSchemaOrg([
-  defineWebPage({
-    name: title,
-    url,
+  const resolveComponent = (type) => {
+    const map = {
+      imageWithText: ImageWithText,
+      carousel: HeroCarousel,
+    }
+    return map[type]
+  }
+
+  const url = 'https://millingbydarrell.com'
+  const title = 'Home - Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
+  const description = 'Custom wood milling, live edge slabs, and straight edge lumber in Ozark, Springfield, and Nixa Missouri.'
+  const image = 'https://millingbydarrell.com/images/working/milling2.jpg'
+
+  useSeoMeta({
+    title,
     description,
-  }),
+    ogTitle: title,
+    ogDescription: description,
+    ogUrl: url,
+    ogType: 'website',
+    ogImage: image,
+  })
 
-  defineLocalBusiness({
-    name: 'Milling By Darrell',
-    url,
-    areaServed: [
-      'Ozark',
-      'Springfield',
-      'Nixa',
-      'Republic',
-      'Branson'
+  useSchemaOrg([
+    defineWebPage({
+      name: title,
+      url,
+      description,
+    }),
+
+    defineLocalBusiness({
+      name: 'Milling By Darrell',
+      url,
+      areaServed: [
+        'Ozark',
+        'Springfield',
+        'Nixa',
+        'Republic',
+        'Branson'
+      ]
+    })
+  ])
+
+  useHead({
+    link: [
+      {
+        rel: 'canonical',
+        href: url
+      }
     ]
   })
-])
-
-useHead({
-  link: [
-    {
-      rel: 'canonical',
-      href: url
-    }
-  ]
-})
 </script>
 
 <template>
@@ -126,11 +127,15 @@ useHead({
     />
   </v-container>
 
+  <EmbededVideo 
+    url="https://www.youtube.com/embed/Jti5MyGy3gA"
+  />
+
   <h2 :class="mobile ? 'h2-subheading mb-6' : 'loud-header-h2'">
     {{ pageData.subtitle }}
   </h2>
 
-  <v-container fluid class="mt-4 mb-4">
+  <v-container :class="mobile ? 'v-text-small' : 'mt-4 mb-4'">
 
     <ImageWithText imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1770526415/wood_slabs2_i7vfqf.jpg" layout="left">
       <div class="text-column">

@@ -21,6 +21,10 @@ const props = defineProps({
   theme: {
     type: String,
     default: 'default'
+  },
+  height: {
+    type: String,
+    default: 'auto'
   }
 })
 
@@ -59,6 +63,7 @@ const themeClass = computed(() =>
     <div
       class="wrapper"
       :class="[layoutClass, { mobile }]"
+      :style="{ height: props.height }"
     >
 
       <!-- TEXT -->
@@ -77,7 +82,6 @@ const themeClass = computed(() =>
       <!-- IMAGE -->
       <div class="image-box">
         <v-img
-        :aspect-ratio="16 / 9"
           :src="imageUrl"
           cover
           eager
@@ -160,9 +164,11 @@ const themeClass = computed(() =>
 
 .layout-overlay {
   position: relative;
-  width: 100%;
   overflow: hidden;
   border-radius: 14px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
 
 .layout-overlay .image-box {
@@ -173,11 +179,20 @@ const themeClass = computed(() =>
 .layout-overlay .image {
   display: block;
   width: 100%;
-  height: 300px;
+  object-fit: cover;
+}
+
+.image-box,
+.text-box {
+  grid-area: 1 / 1; /* Assigns both items to Row 1, Column 1 */
+}
+
+.text-box {
+  z-index: 2; /* Ensures this element stays on top */
 }
 
 .layout-overlay .text-box {
-  position: absolute;
+  position: relative;
   inset: 0;
   z-index: 2;
 
@@ -186,7 +201,6 @@ const themeClass = computed(() =>
   justify-content: center;
 
   padding: 40px;
-  background: rgba(0, 0, 0, 0.55);
   color: white;
 }
 
@@ -200,7 +214,6 @@ const themeClass = computed(() =>
 .image {
   width: 100%;
   height: 100%;
-  max-height: 635px;
 }
 
 /* Border radius adjustments */
@@ -246,11 +259,11 @@ const themeClass = computed(() =>
 /* Overlay */
 
 .variant-card .layout-overlay .image {
-  border-radius: 0px; /*14px*/
+  border-radius: 14px;
 }
 
 .variant-card .layout-overlay .text-box {
-  border-radius: 0px; /*14px*/
+  border-radius: 14px;
 }
 
 /* BASE ELEMENTS */
@@ -262,7 +275,6 @@ const themeClass = computed(() =>
 .image {
   width: 100%;
   height: 100%;
-  max-height: 635px;
 }
 
 /* =========================
@@ -275,8 +287,6 @@ const themeClass = computed(() =>
 }
 
 .variant-card .text-box {
-  /* background: rgba(40, 40, 40, 0.7); */ /* TODO: add this to a theme*/
-  /* color: white; */
   padding: 32px 10px;
   border-radius: 12px 0 0 12px;
 }
@@ -316,6 +326,10 @@ const themeClass = computed(() =>
   color: black;
 }
 
+.theme-dark-transparent {
+  background: rgba(22, 22, 22, 0.6);
+}
+
 /* MOBILE */
 @media (max-width: 960px) {
 
@@ -326,56 +340,24 @@ const themeClass = computed(() =>
   /* Normal layouts */
   .wrapper:not(.layout-overlay) .image-box {
     width: 100%;
-    height: 250px;
-  }
-
-  /* Overlay layout */
-  .layout-overlay {
-    display: block;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .layout-overlay .image-box {
-    width: 100%;
-    height: 200px;
-  }
-
-  .layout-overlay .image {
-    width: 100%;
-    height: 100%;
-    max-height: none;
-  }
-
-  .layout-overlay .text-box {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 24px;
-    overflow: auto;
-
-    border-radius: inherit;
   }
 
   /* Right */
-.variant-card .layout-right .image {
-  border-radius: 0 0 14px 14px;
-}
+  .variant-card .layout-right .image {
+    border-radius: 0 0 14px 14px;
+  }
 
-.variant-card .layout-right .text-box {
-  border-radius: 14px 14px 0 0;
-}
+  .variant-card .layout-right .text-box {
+    border-radius: 14px 14px 0 0;
+  }
 
-/* Left */
-.variant-card .layout-left .image {
-  border-radius: 0 0 14px 14px;
-}
+  /* Left */
+  .variant-card .layout-left .image {
+    border-radius: 0 0 14px 14px;
+  }
 
-.variant-card .layout-left .text-box {
-  border-radius: 14px 14px 0 0;
-}
+  .variant-card .layout-left .text-box {
+    border-radius: 14px 14px 0 0;
+  }
 }
 </style>

@@ -19,12 +19,12 @@ const pageConfig = {
   appBar: {
     color: '#407348',
     height: {
-      mobile: 44,
+      mobile: 55,
       desktop: 68
     },
     logo: {
       src: logo,
-      mobileWidth: 53,
+      mobileWidth: 60,
       desktopWidth: 85,
       link: '/'
     }

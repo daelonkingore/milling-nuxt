@@ -42,22 +42,12 @@
     <h1 :class="mobile ? 'pt-6 main-header-small' : 'main-header'" class="header-color main-header-spacing">
         LET'S MEET
     </h1>
-    <!-- <v-container class="pa-0">
-        <v-card :class="mobile ? 'p-text-size-sm' : 'p-text-size-md'"
-        class="mx-auto pa-6 p-container p-text mt-0 container-spacing"
-        width="100%"
-        rounded="xl"
-        elevation="4"
-        >
-            <p>Ready to mill or need some wood? Click one of the buttons below to Schedule an Appointment!</p>
-            <p>I may contact you via email for more information or updates.</p>
-        </v-card>
-  </v-container class="setWidth"> -->
 
   <ImageWithText
     imageUrl="images/wood-slabs/wood-rounds.jpg"
     layout="overlay"
     class="set-width"
+    theme="dark-transparent"
   >
     <span>
       <p>Ready to mill or need some wood? Click one of the buttons below to Schedule an Appointment!</p>
