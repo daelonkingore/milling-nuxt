@@ -1,10 +1,5 @@
 <script setup>
-defineProps({
-  pricing: {
-    type: Object,
-    required: true
-  }
-})
+import ScheduleMillingBtn from '~/components/ScheduleMillingBtn.vue';
 </script>
 
 <template>
@@ -12,55 +7,59 @@ defineProps({
     <div class="pricing-section">
 
       <div class="pricing-header">
-        {{ pricing.header }}
-        <span v-if="pricing.sub" class="sub"> - {{ pricing.sub }}</span>
+        Pricing
+        <span class="sub"> - Based on log width</span>
       </div>
 
       <table class="pricing-table">
         <tbody>
-          <tr
-            v-for="(row, i) in pricing.rows"
-            :key="i"
-          >
-            <td>{{ row.label }}</td>
-            <td>{{ row.price }}</td>
+          <tr>
+            <td>25" or less</td>
+            <td>$75</td>
+          </tr>
+          <tr>
+            <td>25" - 45"</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>45" or more</td>
+            <td>$125</td>
           </tr>
         </tbody>
       </table>
 
-      <div
-        v-if="pricing.note"
-        class="pricing-note"
-        style="white-space: pre-line"
-      >
-        {{ pricing.note }}
+      <div class="pricing-note" style="white-space: pre-line">
+        2 hour minimum
+          <br>
+        $30 stationary saw blade replacement
+          <br>
+        $100 chainsaw blade replacement
       </div>
 
-      <div v-if="pricing.dimensions" class="dimensions">
-        <strong>{{ pricing.dimensions.title }}</strong>
-        <span v-if="pricing.dimensions.sub" class="sub">
-          - {{ pricing.dimensions.sub }}
+      <div class="dimensions">
+        <strong>Dimensions</strong>
+        <span class="sub">
+          - Max log width
         </span>
 
-        <div
-          v-for="(item, i) in pricing.dimensions.items"
-          :key="i"
-        >
-          {{ item }}
+        <div>
+          Stationary mill: up to 36" wide
+            <br>
+          Portable saws: up to 51" wide
         </div>
       </div>
 
-      <div v-if="pricing.contact" class="contact-info" >
-        <div v-if="pricing.contact.phone">
+      <div class="contact-info" >
+        <div>
             Text:
-            <b>{{ pricing.contact.phone }}</b>
+            <b>(417)360-2260</b>
         </div>
 
-        <div v-if="pricing.contact.email">
-            Email:
-            <b>{{ pricing.contact.email }}</b>
+        <div>
+            Email: <b>millingbydarrell@gmail.com</b>
         </div>
       </div>
+      <ScheduleMillingBtn />
 
     </div>
   </v-container>

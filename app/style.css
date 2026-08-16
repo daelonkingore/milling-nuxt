@@ -3,7 +3,8 @@
 ========================= */
 
 :root {
-  font-family: 'Inter', sans-serif;
+  font-family: "Figtree", sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -66,7 +67,6 @@ a:hover {
 
 .v-application,
 .v-btn {
-  font-family: 'Inter', sans-serif;
   --v-theme-background: #0e3b05;
   color: #ffffff;
 }
@@ -110,7 +110,7 @@ a:hover {
 .main-header {
   border-radius: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  letter-spacing: 6px;
+  letter-spacing: 1px;
   font-size: 3rem;
   font-weight: 600;
   position: relative;
@@ -118,7 +118,6 @@ a:hover {
 }
 
 .main-header-small {
-  letter-spacing: 3px;
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -133,7 +132,7 @@ a:hover {
 /* Large “loud” headers */
 .loud-header {
   margin: 40px 0;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   font-size: 3.2rem;
   font-weight: 600;
   line-height: 1;
@@ -143,7 +142,7 @@ a:hover {
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   font-size: 2.6rem;
   font-weight: 650;
   line-height: 1;
@@ -155,7 +154,7 @@ a:hover {
 
 .loud-header-h3 {
   margin: 40px auto;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-size: 2.2rem;
   font-weight: 600;
   line-height: 1;
@@ -175,7 +174,7 @@ a:hover {
   border-radius: 15px;
   width: 100%;
   margin: 0 auto;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
 }
 
 .h3-subheading {
@@ -255,6 +254,16 @@ a:hover {
     font-size: 22px;
     font-weight: 600;
     letter-spacing: 1.5px;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.submit-button {
+  background-color: #438a4d;
+  width: 60%;
+  margin: 0 auto;
 }
 
 /* =========================

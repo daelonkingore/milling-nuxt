@@ -7,32 +7,6 @@ import { useDisplay } from 'vuetify'
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 
 const pageData = {
-  heading: "LET'S TALK WOOD",
-  subheading: "CONTACT INFO AND MORE",
-  aboutHeading: "ABOUT ME",
-
-  contact: {
-    intro: "Send me a text or email. I usually have my current stock of wood slabs and rounds available on",
-    facebookLink: "https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh",
-    phone: "(417)360-2260",
-    email: "millingbydarrell@gmail.com",
-    marketplace: {
-      marketplaceLink: "https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh",
-      marketplaceText: "Visit My Marketplace Listings"
-    },
-    location: "so if you live in Southern Missouri or Northern Arkansas and need wood milled, a fallen tree gone, or want to buy a wood slab at an affordable price, I'm your guy!",
-    serviceAreas: "I mainly operate in the towns surrounding Ozark, including Sparta, Nixa, Springfield, Republic, Branson, Willard, and more.",
-    youtubeLink: "https://www.youtube.com/@Millingbydarrell",
-    callToActionText: "Check out my"
-  },
-
-  about: {
-    text: "Client paragraph",
-    image: 'images/wood-slabs/bug_cube.jpg',
-    imageLeft: "right",
-    variant: "card"
-  },
-
   galleryImages: [
     'images/wood-slabs/bug_cube.jpg',
     'images/people/milling-big-wood.jpg',
@@ -41,8 +15,8 @@ const pageData = {
 }
 
 const url = 'https://millingbydarrell.com/contact'
-const title = 'Contact - Contact Custom Wood Milling in Ozark, MO | Milling By Darrell'
-const description = 'Contact Milling By Darrell for quotes on custom milling, live edge wood slabs and rounds, and dimensional lumber in Ozark, Springfield, and Nixa Missouri.'
+const title = 'Contact Milling By Darrell for milling services in Southwest MO'
+const description = 'Contact Milling By Darrell for quotes on custom milling, live edge wood slabs and rounds, and dimensional lumber in Southwest Missouri.'
 const image = 'https://millingbydarrell.com/images/working/slabs-on-mill.jpg'
 
 useSeoMeta({
@@ -76,7 +50,7 @@ useHead({
 <template>
   <!-- MAIN HEADER -->
   <h1 :class="mobile ? 'pt-6 main-header-small' : 'main-header'" class="header-color main-header-spacing">
-    {{ pageData.heading }}
+    LET'S TALK WOOD
   </h1>
 
   <!-- EMAIL FORM -->
@@ -86,17 +60,15 @@ useHead({
 
   <!-- CONTACT HEADER -->
   <!-- <h2 :class="mobile ? 'h2-subheading mb-9' : 'loud-header-h2 mb-10'">
-    {{ pageData.subheading }}
+    CONTACT INFO AND MORE
   </h2> -->
 
   <!-- CONTACT CARD -->
-  <ContactSection class="pa-0"
-    :contacts="pageData.contact"
-  />
+  <ContactSection :class="mobile ? '' : 'pa-3'"/>
 
   <!-- ABOUT -->
   <h2 :class="mobile ? 'h3-subheading' : 'loud-header-h3 mb-7'">
-    {{ pageData.aboutHeading }}
+    ABOUT ME
   </h2>
 
     <ImageWithText

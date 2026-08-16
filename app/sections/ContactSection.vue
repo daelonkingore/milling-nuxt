@@ -1,79 +1,131 @@
 <script setup>
 import { useDisplay } from 'vuetify'
 import ImageWithText from '@/components/imageWithText.vue'
+import ScheduleMillingBtn from '~/components/ScheduleMillingBtn.vue';
 
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
-
-defineProps({
-  contacts: {
-    type: Object,
-    required: true
-  }
-})
 </script>
 
 <template>
-  <ImageWithText
+
+  <div :class="mobile ? '' : 'textBoxColumns'" class="">
+
+    <ImageWithText
       imageUrl=""
       layout="overlay"
       class="contact-section-width"
-      :height="mobile ? '680px' : '500px'"
+      :height="mobile ? '300px' : '380px'"
     >
-    <div :class="mobile ? 'p-text-size-sm-con' : 'p-text-size-md-con'">
-      <p>
-        Visit the 
-        <router-link to='/gallery' >
-          <b>Scheduling </b>
-        </router-link>
-        tab to set up an appointment to start milling, or find time to buy my pre-cut lumber.
-      </p>
-      <p>
-        {{ contacts.intro }}
-        <a :href="contacts.facebookLink" target="_blank">
-          <b>Facebook</b>
-        </a>
-      </p>
+      <div :class="mobile ? 'p-text-size-sm-con' : 'p-text-size-md-con'" class="text-spacing">
 
-      <p class="bordered-text">
-        <span v-if="contacts.phone">Text: <b>{{ contacts.phone }}</b></span><br>
-        <span v-if="contacts.email">Email: <b>{{ contacts.email }}</b></span><br>
-        <a v-if="contacts.marketplace" :href="contacts.marketplace.marketplaceLink" target="_blank">
-          <b>{{ contacts.marketplace.marketplaceText }}</b>
-        </a>
-      </p>
+        <span class="textbox-title">Scheduling</span>
+        <hr class="heading-line-width">
 
-      <p v-if="contacts.location">
-        I am based in <b>Ozark, Missouri</b>, {{ contacts.location }}
-      </p>
-      <p v-if="contacts.serviceAreas">
-        {{ contacts.serviceAreas }}.
-      </p>
+        <div class="text-column">
+          <div>
+            Use this to schedule a milling job. 
+            <ScheduleMillingBtn />
+            <p :class="mobile ? 'p-text-size-sm-con' : 'p-text-size-md-con'">
+              Or visit the 
+              <router-link to='/schedule' >
+                <b>Scheduling tab </b>
+              </router-link>
+              to set up an appointment to start milling. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </ImageWithText>
 
-      <p v-if="contacts.youtubeLink || contacts.facebookLink">
-        <br>
-        {{ contacts.callToActionText }}
+    <ImageWithText
+        imageUrl=""
+        layout="overlay"
+        class="contact-section-width"
+        :height="mobile ? '340px' : '380px'"
+      >
+      <div :class="mobile ? 'p-text-size-sm-con' : 'p-text-size-md-con'" class="text-spacing">
+        <span class="textbox-title">Contact</span>
+        <hr class="heading-line-width">
 
-        <template v-if="contacts.youtubeLink">
-            <a :href="contacts.youtubeLink" target="_blank">
-            <b>YouTube</b>
-            </a>
-        </template>
+        <div class="text-column">
+            <div class="bordered-text">
+              
+              <div>
+                <div class="contact-row">
+                  <v-icon icon="mdi-phone"></v-icon>
+                  <span>Text: <b>(417)360-2260</b></span>
+                </div>
 
-        <template v-if="contacts.youtubeLink && contacts.facebookLink">
-            and
-        </template>
+                <div class="contact-row">
+                  <v-icon icon="mdi-email"></v-icon>
+                  <span>Email: <b>millingbydarrell@gmail.com</b></span>
+                </div>
 
-        <template v-if="contacts.facebookLink">
-            <a :href="contacts.facebookLink" target="_blank">
-            <b>Visit My Facebook</b>
-            </a> for timelapses of my work, and more!
-        </template>
-      </p>
-    </div>
-  </ImageWithText>
+                <div class="contact-row">
+                  <v-icon icon="mdi-facebook"></v-icon>
+                  <a href="https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh" target="_blank">
+                    <b>Visit My Marketplace Listings</b>
+                  </a>
+                </div>
+
+                <div class="contact-row">
+                  <v-icon icon="mdi-youtube"></v-icon>
+                  <a href="https://www.youtube.com/@Millingbydarrell" target="_blank">
+                    <b>Check out my Youtube</b>
+                  </a>
+                </div>
+              </div>
+              
+          </div>
+        </div>  
+
+      </div>
+    </ImageWithText>
+
+    <ImageWithText
+      imageUrl=""
+      layout="overlay"
+      class="contact-section-width"
+      :height="mobile ? '300px' : '380px'"
+    >
+      <div :class="mobile ? 'p-text-size-sm-con' : 'p-text-size-md-con'" class="text-spacing">
+        <span class="textbox-title">Location</span>
+        <hr class="heading-line-width">
+
+        <div class="text-column">
+          <div>
+            <p>
+            <v-icon icon="mdi-map-marker"></v-icon>
+              Ozark, Missouri
+            </p>
+            <p>
+              I also serve Springfield, Nixa, Sparta, and the surrounding Southern Missouri and Northern Arkansas area.
+            </p>
+            <p>
+              Please text, email, or send me a message on 
+              <a href="https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink" target="_blank">
+                <b>Facebook </b>
+              </a>
+              for the address.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </ImageWithText>
+
+  </div>
 </template>
 
 <style scoped>
+.submit-button {
+  margin-top: 17px;
+}
+
+.heading-line-width {
+  width: 100%;
+}
+
 .bordered-text {
   border: rgb(187, 187, 187) solid 2px;
   border-radius: 15px;
@@ -81,6 +133,17 @@ defineProps({
   padding: 15px;
   margin: 10px;
   line-height: 28px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.contact-row .v-icon {
+  margin-right: 10px;
+  width: 24px;
 }
 
 .contact-section-width {

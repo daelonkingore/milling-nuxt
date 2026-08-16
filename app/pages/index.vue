@@ -3,6 +3,7 @@
   import HeroCarousel  from '@/components/heroCarousel.vue';
   import ImageWithText  from '@/components/imageWithText.vue';
   import EmbededVideo from '~/components/EmbedVideo.vue'
+  import ScheduleMillingBtn from '~/components/ScheduleMillingBtn.vue';
   
   const { mobile } = useDisplay({ mobileBreakpoint: 960 });
 
@@ -17,7 +18,7 @@
         type: "hero",
         imageUrl: "images/wood-slabs/slabs_on_mill.jpg",
         title: "Custom Milling Done Right",
-        subtitle: "We turn raw logs into beautiful lumber",
+        subtitle: "Turning raw logs into beautiful lumber",
         button: {
           text: "View Services",
           to: "/services"
@@ -56,12 +57,6 @@
     ]
   }
 
-
-  const pageData = {
-    title: "MILLING BY DARRELL",
-    subtitle: "MILLING IN OZARK MISSOURI",
-  }
-
   const resolveComponent = (type) => {
     const map = {
       imageWithText: ImageWithText,
@@ -71,8 +66,8 @@
   }
 
   const url = 'https://millingbydarrell.com'
-  const title = 'Home - Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
-  const description = 'Custom wood milling, live edge slabs, and straight edge lumber in Ozark, Springfield, and Nixa Missouri.'
+  const title = 'Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
+  const description = 'Custom wood milling, live edge slabs, and straight edge lumber in Ozark, Springfield, and Southwest Missouri.'
   const image = 'https://millingbydarrell.com/images/working/milling2.jpg'
 
   useSeoMeta({
@@ -117,7 +112,7 @@
 
 <template>
   <h1 :class="mobile ? 'pt-6 main-header-small' : 'main-header'" class="header-color main-header-spacing mt-0">
-    {{ pageData.title }}
+    MILLING BY DARRELL
   </h1>
 
   <v-container fill-height fluid class="hero-row">
@@ -132,77 +127,152 @@
   />
 
   <h2 :class="mobile ? 'h2-subheading mb-6' : 'loud-header-h2'">
-    {{ pageData.subtitle }}
+    MILLING IN OZARK MISSOURI
   </h2>
 
-  <v-container :class="mobile ? 'v-text-small' : 'mt-4 mb-4'">
-
-    <ImageWithText imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1770526415/wood_slabs2_i7vfqf.jpg" layout="left">
+  <v-container :class="mobile ? 'v-text-small' : 'mt-4 mb-4'"
+    class="home-info-width"
+  >
+    <ImageWithText 
+      imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1770526415/wood_slabs2_i7vfqf.jpg" 
+      layout="left"
+      height="480px"
+      :imgHeight="mobile ? '300px' : '480px'"
+    >
       <div class="text-column">
-          <span>Milling By Darrell is a small scale milling business in the Christian County area.</span>
+          <span>Milling By Darrell is a small scale milling business in the Southwest Missouri area.
+          </span>
+
+          <span>
+            I mill live edge slabs or lumber to use for your projects.
+            If you need wood for a table, mantelpiece, or other woodworking project, I can mill it at a great price.
+          </span>
           
-          <span>What started as a passionate hobby quickly turned into a passionate business. 
-          Fueled by a love of chainsaws and the smell of fresh cut wood, Darrell is dedicated to his craft.</span>
-          
-              <span>Here you can find information on 
-          <router-link to='/services' >
+          <span>Here you can find information on 
+            <router-link to='/services' >
               Milling Services, 
-          </router-link>
-          or see some examples of 
-          <router-link to='/gallery' >
-              wood slabs and rounds 
-          </router-link>
-          for your next woodworking project! </span>
+            </router-link>
+            or see some examples of 
+            <router-link to='/gallery' >
+              wood slabs and rounds.
+            </router-link>
+          </span>
           
-          <span><a href='https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh' target='_blank' rel='noopener noreferrer'>
-              <b>Visit Marketplace Listings</b>
+          <span>
+            <a href='https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh' target='_blank' rel='noopener noreferrer'>
+            <b>Visit my Marketplace Listings</b>
           </a>
-          to see more what I have to offer.</span>
+          to see what I have to offer right now.</span>
           
           <span>Text: <b>(417)360-2260</b></span>
           
           <span>Email: <b>millingbydarrell@gmail.com</b></span>
+          <ScheduleMillingBtn />
+          
       </div>
     </ImageWithText>
+  </v-container>
 
+  <ImageWithText
+    layout="overlay"
+    class="small-wood-type-desc"
+  >
+    
+    <span>I mill all sorts of wood. If you need a specific type for a project, 
+      <router-link to='/contact' >
+        contact me 
+      </router-link>
+      and there is a good chance I have it, or I can source it.
+    </span>
+  </ImageWithText>
+
+  <v-container :class="mobile ? 'v-text-small' : 'textBoxColumns mt-4 mb-4'"
+    class="home-info-width"
+  >
     <ImageWithText
-      imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1770526388/slabs-against-house_vrnvte.jpg"
-      layout="right"
+      imageUrl="images/wood-slabs/pretty-dark-brown-slabs.jpg"
+      layout="top"
+      :height="mobile ? '260px' : '280px'"
+      :imgHeight="mobile ? '50vh' : '70vh'"
     >
-      <div className="text-column">
-        <span>If you need a slab of wood, wood round, mantelpiece, or post, I will cut it.</span>
-        <span>If you need a fallen tree removed, I will take it.</span>
-        <span>If you need a log milled to size, I will mill it.</span>
+      <span class="textbox-title">Hardwoods</span>
+      <hr>
+      <div className="text-column text-spacing">
+        <span>
+          <strong>Hardwoods</strong> are dense and strong, making them great for furniture, mantelpieces, or structural wood like beams. 
+        </span>
+        <span>
+          I frequently have White Oak and Walnut available in stock, but I often have types such as
+          Elm, Hickory, Ash, and more.
+        </span>
+      </div>
+    </ImageWithText>
+    <ImageWithText
+      imageUrl="images/wood-slabs/pretty-red-slabs.jpg"
+      layout="top"
+      :height="mobile ? '260px' : '280px'"
+      :imgHeight="mobile ? '50vh' : '70vh'"
+    >
+      <span class="textbox-title">Softwoods</span>
+      <hr>
+      <div className="text-column text-spacing">
+        <span>
+          <strong>Softwoods</strong> are light and cheap, perfect for construction material, lightweight shelves, garden beds, or outdoor furniture.
+        </span>
+        <span>
+          I regularly stock both Pine and Cedar.
+        </span>
       </div>
     </ImageWithText>
   </v-container>
 </template>
 
 <style scoped>
-    .hero-row {
-        margin-bottom: 5px;
-        padding-top: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+
+  .small-wood-type-desc {
+    width: 60%;
+  }
+
+  .home-info-width {
+    max-width: 1800px;
+  }
+
+  .home-info-ending-width {
+    width: 80%;
+  }
+
+  .hero-row {
+      margin-bottom: 5px;
+      padding-top: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+  }
+
+  .header-color {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      margin-bottom: 0px;
+  }
+
+  .v-container {
+      margin-bottom: 5px;
+      padding-top: 0px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 960px) {
+    .main-header-small {
+      letter-spacing: 3px;
+      font-size: 1.5rem;
+      font-weight: 600;
     }
 
-    .header-color {
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        margin-bottom: 0px;
+    .home-info-ending-width {
+      width: 100%;
     }
 
-    .v-container {
-        margin-bottom: 5px;
-        padding-top: 0px;
+    .small-wood-type-desc {
+      width: 100%;
     }
-
-    /* MOBILE */
-    @media (max-width: 960px) {
-        .main-header-small {
-            letter-spacing: 3px;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-    }
+  }
 </style>
