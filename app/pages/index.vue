@@ -136,14 +136,16 @@
     <ImageWithText 
       imageUrl="https://res.cloudinary.com/dubulxjtb/image/upload/v1770526415/wood_slabs2_i7vfqf.jpg" 
       layout="left"
-      height="460px"
-      :imgHeight="mobile ? '300px' : '460px'"
+      height="480px"
+      :imgHeight="mobile ? '300px' : '480px'"
     >
       <div class="text-column">
-          <span>Milling By Darrell is a small scale milling business in the Southwest Missour area. 
-            <br>
+          <span>Milling By Darrell is a small scale milling business in the Southwest Missouri area.
+          </span>
+
+          <span>
             I mill live edge slabs or lumber to use for your projects.
-            If you need wood for a table or mantelpiece, I can mill it at a great price.
+            If you need wood for a table, mantelpiece, or other woodworking project, I can mill it at a great price.
           </span>
           
           <span>Here you can find information on 
@@ -152,9 +154,8 @@
             </router-link>
             or see some examples of 
             <router-link to='/gallery' >
-              wood slabs and rounds 
+              wood slabs and rounds.
             </router-link>
-            for your next woodworking project! 
           </span>
           
           <span>
@@ -201,7 +202,8 @@
           <strong>Hardwoods</strong> are dense and strong, making them great for furniture, mantelpieces, or structural wood like beams. 
         </span>
         <span>
-          Missouri provides an abundance of hardwoods I keep in stock like white oak and walnut.
+          I frequently have White Oak and Walnut available in stock, but I often have types such as
+          Elm, Hickory, Ash, and more.
         </span>
       </div>
     </ImageWithText>
@@ -218,7 +220,7 @@
           <strong>Softwoods</strong> are light and cheap, perfect for construction material, lightweight shelves, garden beds, or outdoor furniture.
         </span>
         <span>
-          I regularly stock both pine and cedar.
+          I regularly stock both Pine and Cedar.
         </span>
       </div>
     </ImageWithText>
