@@ -35,8 +35,8 @@ const page = {
 }
 
 const url = 'https://millingbydarrell.com/gallery'
-const title = 'Gallery - Images for Custom Wood Milling in Ozark, MO | Milling By Darrell'
-const description = 'Images for Milling By Darrell. Live edge wood slabs and rounds and dimensional lumber in Ozark, Springfield, and Nixa Missouri.'
+const title = 'Images for Custom Wood Milling in Southwest MO | Milling By Darrell'
+const description = 'Images of Live edge wood slabs, rounds, and lumber in Southwest Missouri by Milling By Darrell.'
 const image = 'https://millingbydarrell.com/images/working/slabs_on_trailer_chainsaw.jpg'
 
 useSeoMeta({

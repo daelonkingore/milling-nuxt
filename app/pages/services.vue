@@ -6,67 +6,16 @@ import PricingSection from '@/sections/PricingSection.vue'
 const { mobile } = useDisplay({ mobileBreakpoint: 960 })
 
 const pageData = {
-  heading: "LET ME MILL FOR YOU",
-
   topImages: [
     'images/working/milling1.jpg',
     'images/working/milling2.jpg',
     'images/working/milling3.jpg',
   ],
-
-  servicesHeading: "MILLING SERVICES",
-
-  pricing: {
-    image: 'images/people/men-working3.jpg',
-    layout: "right",
-
-    pricing: {
-      header: "Example Pricing",
-      sub: "Based on log width",
-
-      rows: [
-        { label: '25" or less', price: '$75' },
-        { label: '25" - 45"', price: '$100' },
-        { label: '45" or more', price: '$125' }
-      ],
-
-      note: "2 hour minimum.\n$30 stationary saw blade replacement\n$100 chainsaw blade replacement",
-
-      dimensions: {
-        title: "Example Dimensions",
-        sub: "Max log width",
-        items: [
-          'Stationary mill: up to 36" wide', 
-          'Portable saws: up to 51" wide'
-        ]
-      },
-
-      contact: {
-        phone: "(417)360-2260",
-        email: "millingbydarrell@gmail.com"
-      }
-    }
-  },
-
-  travelLimits: 
-    {
-      title: "Travel Limits",
-      image: 'images/wood-slabs/slabs_on_trailer_chainsaw.jpg',
-      layout: "left",
-      content: "Example text."
-    },
-
-  faq: {
-    title: "Frequently Asked Questions",
-    image: 'images/wood-slabs/slabs-on-mill.jpg',
-    layout: "left",
-  },
-
 }
 
 const url = 'https://millingbydarrell.com/services'
-const title = 'Services - Custom Wood Milling Services in Ozark & Springfield, MO | Milling By Darrell'
-const description = 'Professional portable sawmill services in Ozark, Springfield, Nixa, and southwest Missouri. Custom lumber milling, live-edge slabs, and on-site milling available.'
+const title = 'Custom Wood Milling Services in Ozark & Springfield, MO | Milling By Darrell'
+const description = 'Professional portable sawmill services in Ozark, Springfield, and southwest Missouri. Custom lumber milling, live-edge slabs, and on-site milling available.'
 const image = 'https://millingbydarrell.com/images/working/milling1.jpg'
 
 useSeoMeta({
@@ -100,7 +49,7 @@ useHead({
 <template>
   <!-- HEADER -->
   <h1 :class="mobile ? 'pt-6 main-header-small' : 'main-header'" class="header-color main-header-spacing mb-8">
-    {{ pageData.heading }}
+    LET ME MILL FOR YOU
   </h1>
 
   <!-- TOP IMAGES -->
@@ -124,45 +73,51 @@ useHead({
 
   <!-- SERVICES HEADER -->
   <h2 :class="mobile ? 'h2-subheading mb-4' : 'loud-header-h2 mb-7'">
-    {{ pageData.servicesHeading }}
+    MILLING SERVICES
   </h2>
 
   <!-- DYNAMIC SECTIONS -->
   <v-container :class="mobile ? 'v-text-small' : 'easy-to-see'">
 
     <ImageWithText 
-      :imageUrl="pageData.pricing.image"
+      imageUrl="images/people/men-working3.jpg"
       layout="left"
+      height="650px"
+      :imgHeight="mobile ? '50vh' : '650px'"
     >
+      <div class="text-column">
       <span class="textbox-title">Milling</span>
-        <hr>
-      <PricingSection
-        :pricing="pageData.pricing.pricing"
-      />
+      <hr>
+        <PricingSection/>
+      </div>
     </ImageWithText>
 
     <ImageWithText
-      :imageUrl="pageData.travelLimits.image"
+      imageUrl="images/wood-slabs/slabs_on_trailer_chainsaw.jpg"
       layout="right"
+      height="350px"
+      :imgHeight="mobile ? '40vh' : '350px'"
     >
-      <span class="textbox-title">{{ pageData.travelLimits.title }}</span>
+      <v-container class="p-text-size p-text-line-height text-column">
+      <span class="textbox-title">Travel Limits</span>
       <hr>
-        <v-container class="p-text-size p-text-line-height text-column">
-            <span>I will travel to you, but I can only reach so far.</span>
-            <span><b>If the job is outside of the Springfield, Ozark, or Nixa MO area</b>:
-            <br>Travel expenses are added based on gas and time taken.</span>
-            <span><b>If travel time is longer than 2 hours</b>:
-            <br>I likely won't make the trip, but feel free to ask!</span>
-        </v-container>
+          <span>I will travel to you, but I can only reach so far.</span>
+          <span><b>If the job is outside of the Springfield, Ozark, or Nixa MO area</b>:
+          <br>Travel expenses are added based on gas and time taken.</span>
+          <span><b>If travel time is longer than 2 hours</b>:
+          <br>I likely won't make the trip, but feel free to ask!</span>
+      </v-container>
     </ImageWithText>
 
     <ImageWithText 
-      :imageUrl="pageData.faq.image"
+      imageUrl="images/wood-slabs/slabs-on-mill.jpg"
       layout="left"
+      height="350px"
+      :imgHeight="mobile ? '40vh' : '350px'"
     >
       <div class="text-column">
-        <span class="textbox-title">{{ pageData.faq.title }}</span>
-        <hr>
+      <span class="textbox-title">Frequently Asked Questions</span>
+      <hr>
         <v-container class="p-text-size p-text-line-height">
             <b>Will you cut the tree down before milling it?</b>
             <br>My passion is in milling, so <b>we do not offer tree felling services.</b>

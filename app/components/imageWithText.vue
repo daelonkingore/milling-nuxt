@@ -25,6 +25,10 @@ const props = defineProps({
   height: {
     type: String,
     default: 'auto'
+  },
+  imgHeight: {
+    type: String,
+    default: 'auto'
   }
 })
 
@@ -63,12 +67,12 @@ const themeClass = computed(() =>
     <div
       class="wrapper"
       :class="[layoutClass, { mobile }]"
-      :style="{ height: props.height }"
     >
 
       <!-- TEXT -->
       <div
         class="text-box"
+        :style="{ height: props.height }"
         :class="[
           mobile ? 'p-text-size-s' : 'p-text-size-l',
           themeClass
@@ -82,6 +86,7 @@ const themeClass = computed(() =>
       <!-- IMAGE -->
       <div class="image-box">
         <v-img
+          :style="{ height: props.imgHeight }"
           :src="imageUrl"
           cover
           eager
@@ -240,20 +245,20 @@ const themeClass = computed(() =>
 
 .variant-card .layout-top .image,
 .variant-card .layout-stacked .image {
-  border-radius: 14px 14px 0 0;
+  border-radius: 0 0 14px 14px ;
 }
 
 .variant-card .layout-top .text-box,
 .variant-card .layout-stacked .text-box {
-  border-radius: 0 0 14px 14px;
-}
-
-.variant-card .layout-bottom .text-box {
   border-radius: 14px 14px 0 0;
 }
 
-.variant-card .layout-bottom .image {
+.variant-card .layout-bottom .text-box {
   border-radius: 0 0 14px 14px;
+}
+
+.variant-card .layout-bottom .image {
+  border-radius: 14px 14px 0 0;
 }
 
 /* Overlay */
@@ -327,7 +332,7 @@ const themeClass = computed(() =>
 }
 
 .theme-dark-transparent {
-  background: rgba(22, 22, 22, 0.6);
+  background: rgba(22, 22, 22, 0.7);
 }
 
 /* MOBILE */

@@ -32,7 +32,7 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       title: 'Lumber Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell',
        meta: [
-        { name: 'description', content: 'Custom wood milling, live edge slabs, and dimensional lumber in Ozark, Springfield, and Nixa Missouri.' }
+        { name: 'description', content: 'Custom wood milling, live edge slabs, and lumber in Ozark, Springfield, and Southwest Missouri.' }
       ],
     }
   },
@@ -43,10 +43,11 @@ export default defineNuxtConfig({
     '@nuxtjs/seo', 
     'nuxt-schema-org',
     'nuxt-seo-utils',
-    'vuetify-nuxt-module'],
+    'vuetify-nuxt-module',
+    '@nuxt/fonts'],
   site: {
     url: 'https://millingbydarrell.com/',
-    name: 'Wood Milling and Live Edge Slabs in Ozark, MO | Milling By Darrell'
+    name: 'Milling By Darrell'
   },
   robots: {
     groups: [
@@ -71,5 +72,13 @@ export default defineNuxtConfig({
         defaultTheme: 'dark'
       }
     }
-  }
+  },
+  fonts: {
+    families: [
+      {
+        name: 'Figtree',
+        provider: 'google',
+      },
+    ],
+  },
 })

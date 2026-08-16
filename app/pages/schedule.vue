@@ -6,7 +6,7 @@
   const { mobile } = useDisplay({ mobileBreakpoint: 960 });
   
   const url = 'https://millingbydarrell.com/schedule'
-  const title = 'Scheduling - Appointments for Custom Wood Milling and lumber pickup in Ozark, MO | Milling By Darrell'
+  const title = 'Appointments for Custom Wood Milling pickup in Southwest MO | Milling By Darrell'
   const description = 'Scheduling wood pickup and milling appointments for Milling By Darrell in Ozark, Springfield, Nixa, and Southwest Missouri.'
   const image = 'https://millingbydarrell.com/images/working/closeup-mill.jpg'
 
@@ -43,19 +43,31 @@
         LET'S MEET
     </h1>
 
+  <SchedulingButtons />
+
   <ImageWithText
     imageUrl="images/wood-slabs/wood-rounds.jpg"
     layout="overlay"
     class="set-width"
     theme="dark-transparent"
+    height="260px"
+    imgHeight="260px"
   >
     <span>
-      <p>Ready to mill or need some wood? Click one of the buttons below to Schedule an Appointment!</p>
-      <p>I may contact you via email for more information or updates.</p>
+      <p>Remember to look at the
+        <router-link to='/services' >
+          <b>Services </b>
+        </router-link>
+        page for more information about pricing, maximum log dimensions, travel limits, and frequently asked questions.
+        <br><br>
+        For examples of my live edge wood, dimensional lumber, or finished product made by previous customers, see the 
+        <router-link to='/gallery' >
+          <b>Wood Slabs and Rounds </b>
+        </router-link>
+        page.
+      </p>
     </span>
   </ImageWithText>
-
-  <SchedulingButtons />
 
   <!-- EMAIL FORM -->
   <!-- <div class="email-form">
@@ -65,13 +77,13 @@
 </template>
 
 <style scoped>
-    .container-spacing {
-      margin-bottom: 0px;
-    }
+  .container-spacing {
+    margin-bottom: 0px;
+  }
 
-    .set-width {
-      width: 70%;
-    }
+  .set-width {
+    width: 75%;
+  }
 
 /* MOBILE */
 @media (max-width: 960px) {
