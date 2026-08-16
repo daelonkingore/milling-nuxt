@@ -160,9 +160,9 @@
           
           <span>
             <a href='https://www.facebook.com/marketplace/profile/100069335852473/?ref=permalink&mibextid=6ojiHh' target='_blank' rel='noopener noreferrer'>
-            <b>Visit Marketplace Listings</b>
+            <b>Visit my Marketplace Listings</b>
           </a>
-          to see more what I have to offer.</span>
+          to see what I have to offer right now.</span>
           
           <span>Text: <b>(417)360-2260</b></span>
           
