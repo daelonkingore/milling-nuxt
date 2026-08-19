@@ -19,7 +19,7 @@ import ScheduleMillingBtn from '~/components/ScheduleMillingBtn.vue';
           </tr>
           <tr>
             <td>25" - 45"</td>
-            <td>$130</td>
+            <td>$100</td>
           </tr>
           <tr>
             <td>45" or more</td>
@@ -33,7 +33,7 @@ import ScheduleMillingBtn from '~/components/ScheduleMillingBtn.vue';
           <br>
         $30 stationary saw blade replacement
           <br>
-        $100 chainsaw blade replacement
+        $130 chainsaw blade replacement
       </div>
 
       <div class="dimensions">
