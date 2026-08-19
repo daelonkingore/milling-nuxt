@@ -267,6 +267,26 @@ a:hover {
 }
 
 /* =========================
+   Gallery select
+========================= */
+
+.gallery-menu {
+  background: #285735 !important;
+}
+
+.gallery-menu .v-list {
+  background: #285735 !important;
+}
+
+.gallery-menu .v-list-item {
+  color: #fff !important;
+}
+
+.gallery-menu .v-list-item:hover {
+  background: #396846 !important;
+}
+
+/* =========================
    Misc
 ========================= */
 
