@@ -9,14 +9,23 @@
         imageUrl=""
         layout="overlay"
         class=""
-        :height="mobile ? '' : '275px'"
+        :height="mobile ? '' : ''"
       >
         <div class="text-spacing">
           <span class="textbox-title">Schedule Milling Job</span>
           <hr>
           <p class="flex-grow-1">
-            Use this to schedule a milling job. I will come out and mill your logs or
-            stumps to your chosen dimensions. See the
+            Use this to schedule a milling job or get a quote! 
+            <br>
+            <br>
+            Feel free to
+            <RouterLink to="contact">
+              contact
+            </RouterLink>
+            me if you have any questions. If you schedule an appointment, I will send you an email for additional information.
+            <br>
+            <br>
+            See the
             <router-link to="/services">
               Milling Services
             </router-link>

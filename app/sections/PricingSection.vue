@@ -19,7 +19,7 @@ import ScheduleMillingBtn from '~/components/ScheduleMillingBtn.vue';
           </tr>
           <tr>
             <td>25" - 45"</td>
-            <td>$100</td>
+            <td>$130</td>
           </tr>
           <tr>
             <td>45" or more</td>

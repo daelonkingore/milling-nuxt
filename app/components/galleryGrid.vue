@@ -231,6 +231,8 @@ function getImageUrl(img) {
     item-title="title"
     item-value="value"
     label="Select Gallery"
+    class="dropdown"
+    :menu-props="{ contentClass: 'gallery-menu' }"
   />
 
   <!-- ===== Image Grid ===== -->
@@ -290,3 +292,59 @@ function getImageUrl(img) {
     </div>
   </v-dialog>
 </template>
+
+<style scoped>
+  .dropdown {
+  width: 60%;
+  margin: 20px auto;
+  font-size: 18px;
+}
+
+/* The visible select field */
+.dropdown :deep(.v-field) {
+  background-color: #35704e;
+  border-radius: 10px;
+  color: #3f7a58;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input/selected text */
+.dropdown :deep(.v-field__input) {
+  /* font-size: 18px; */
+  color: #fff;
+}
+
+/* Label */
+.dropdown :deep(.v-label) {
+  /* font-size: 18px; */
+  color: #fff;
+}
+
+/* Dropdown arrow */
+.dropdown :deep(.v-field__append-inner) {
+  color: #fff;
+}
+
+/* Hover effect */
+.dropdown :deep(.v-field:hover) {
+  background-color: #3f7a58;
+}
+
+/* Focused state */
+.dropdown :deep(.v-field--focused) {
+  background-color: #40815b;
+  box-shadow: 0 0 0 2px rgba(55, 97, 65, 0.25);
+}
+
+/* Selected text */
+.dropdown :deep(input) {
+  color: #fff;
+}
+
+/* MOBILE */
+@media (max-width: 960px) {
+    .dropdown {
+      width: 100%;
+    }
+}
+</style>
