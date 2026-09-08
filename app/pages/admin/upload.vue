@@ -2,7 +2,7 @@
 import { ref, watch, computed, onMounted } from 'vue'
 import Gallery from '@/components/galleryGrid.vue'
 import { upload } from '@/composables/handleImages'
-import netlifyIdentity from 'netlify-identity-widget'
+import * as netlifyIdentity from 'netlify-identity-widget';
 import { useCloudinaryImages } from '@/composables/useCloudinaryImages'
 
 const file = ref(null)
