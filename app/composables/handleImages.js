@@ -1,5 +1,3 @@
-import heic2any from "heic2any";
-
 export async function upload(file, folder, token, maxWidth = 2000, quality = 0.8) {
   if (file.type === "image/heic" || file.name.endsWith(".heic")) {
     const blob = await heic2any({
