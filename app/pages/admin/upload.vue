@@ -2,7 +2,6 @@
 import { ref, watch, computed, onMounted } from 'vue'
 import Gallery from '@/components/galleryGrid.vue'
 import { upload } from '@/composables/handleImages'
-// import netlifyIdentity from 'netlify-identity-widget'
 import { useCloudinaryImages } from '@/composables/useCloudinaryImages'
 
 const { $netlifyIdentity } = useNuxtApp()
@@ -17,27 +16,24 @@ const {
   loadImages
 } = useCloudinaryImages()
 
-// netlifyIdentity.init({
-//   showSignup: false // hide sign-up completely
-// })
 
 onMounted(() => {
-// Handle login/logout events
-$netlifyIdentity.on('login', u => {
-  user.value = u
-  $netlifyIdentity.close()
+  // Handle login/logout events
+  $netlifyIdentity.on('login', u => {
+    user.value = u
+    $netlifyIdentity.close()
 
-  if (selectedFolder.value) {
-    loadImages(selectedFolder.value)
-  }
-})
+    if (selectedFolder.value) {
+      loadImages(selectedFolder.value)
+    }
+  })
 
-$netlifyIdentity.on('logout', () => {
-  user.value = null
-  images.value = []
-})
+  $netlifyIdentity.on('logout', () => {
+    user.value = null
+    images.value = []
+  })
 
-// Check if already logged in
+  // Check if already logged in
   const current = $netlifyIdentity.currentUser()
 
   if (current) {
